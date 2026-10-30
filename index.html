@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="Ders Takip — ödevlerini, sınavlarını ve çalışma planını düzenle.">
+<meta name="application-name" content="Ders Takip">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ders Takip">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icon.svg">
+<title>Ders Takip</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d2e;--panel2:#18263a;--text:#edf3fb;--muted:#9aabc0;--line:#26364d;--accent:#76a9ff;--accent2:#9b8cff;--good:#61d6a5;--warn:#f4c46b;--bad:#ff8585;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#1c3150 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;padding:10px 14px}button:hover{border-color:var(--accent)}button.primary{background:var(--accent);color:#071326;border-color:transparent;font-weight:700}button.ghost{background:transparent}.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.side{padding:24px 16px;border-right:1px solid var(--line);background:#0d1726cc;position:sticky;top:0;height:100vh;height:100dvh;display:flex;flex-direction:column;min-height:0;overflow:hidden}.brand{display:flex;align-items:center;gap:11px;font-size:19px;font-weight:800;margin:4px 8px 22px;flex:0 0 auto}.logo{display:grid;place-items:center;width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071326;font-weight:900}.nav{display:grid;gap:6px;flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:2px 3px 12px;scrollbar-width:thin}.nav button{display:flex;align-items:center;gap:12px;text-align:left;border-color:transparent;background:transparent;color:var(--muted);padding:11px 13px}.nav button.active,.nav button:hover{background:var(--panel2);color:var(--text);border-color:var(--line)}.side-bottom{position:static;flex:0 0 auto;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}.plan{background:linear-gradient(145deg,#1d3150,#202443);border:1px solid #344766;border-radius:16px;padding:14px}.plan small{color:var(--muted)}.main{min-width:0;padding:28px clamp(16px,3vw,42px) 60px;max-width:1500px;width:100%;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}.eyebrow{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.top h1{font-size:clamp(25px,3vw,34px);margin:4px 0}.muted{color:var(--muted)}.top-actions{display:flex;gap:8px;align-items:center}.avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#293d5a;font-weight:800}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.card{background:linear-gradient(160deg,#152238,#111c2d);border:1px solid var(--line);border-radius:var(--radius);padding:18px;min-width:0;box-shadow:0 10px 35px #00000018}.stat-label{color:var(--muted);font-size:13px}.stat-value{font-size:29px;font-weight:800;margin:5px 0}.stat-foot{font-size:12px;color:var(--good)}.cols{grid-template-columns:minmax(0,1.35fr) minmax(280px,.8fr)}.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.card h2{font-size:17px;margin:0}.card h3{font-size:15px;margin:0}.list{display:grid;gap:9px}.item{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#101a2a}.item .grow{flex:1;min-width:0}.item-title{font-weight:650;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.item-sub{font-size:12px;color:var(--muted)}.check{width:19px;height:19px;accent-color:var(--accent)}.pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:11px;background:#263b59;color:#cfe0ff}.pill.green{background:#153b34;color:#8ce5c0}.pill.yellow{background:#473a20;color:#f5d38e}.empty{padding:24px;text-align:center;border:1px dashed #354863;border-radius:14px;color:var(--muted)}.progress{height:8px;background:#25354b;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px}.section{display:none}.section.active{display:block}.section-title{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:8px 0 20px}.section-title h1{margin:0;font-size:28px}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.field{display:grid;gap:6px;margin-bottom:12px}.field label{font-size:12px;color:var(--muted)}input,select,textarea{width:100%;border:1px solid var(--line);background:#0c1727;color:var(--text);border-radius:11px;padding:11px 12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent)}textarea{min-height:90px;resize:vertical}.formrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}.timer{text-align:center;padding:28px 10px}.time{font-size:clamp(48px,9vw,76px);font-weight:800;letter-spacing:-.05em;font-variant-numeric:tabular-nums}.timer-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}.tabs button{padding:8px 12px;font-size:13px}.tabs button.active{background:#2c4770;border-color:#547bb5}.notice{border:1px solid #68552d;background:#332b1b;color:#f4d89d;padding:12px 14px;border-radius:13px;font-size:13px;margin:14px 0}.locked{opacity:.78}.locked::after{content:"  ·  Ücretli paket";color:var(--warn);font-size:11px}.mobile-nav{display:none}.toast{position:fixed;right:18px;bottom:18px;background:#243956;border:1px solid #547bb5;padding:12px 16px;border-radius:12px;box-shadow:0 10px 30px #0008;display:none;z-index:20}.small{font-size:12px}.footer-note{color:var(--muted);font-size:12px;margin-top:18px}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{display:none}.main{padding:22px 16px 100px}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:10;background:#0c1727f2;border-top:1px solid var(--line);padding:8px 5px calc(8px + env(safe-area-inset-bottom));justify-content:space-around;backdrop-filter:blur(16px)}.mobile-nav button{border:0;background:transparent;padding:7px 5px;color:var(--muted);font-size:11px;display:grid;gap:3px;justify-items:center}.mobile-nav button.active{color:var(--accent)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.cols{grid-template-columns:1fr}.top{align-items:flex-start}.top-actions .hide-mobile{display:none}}
+@media(max-width:520px){.formrow{grid-template-columns:1fr}.section-title{align-items:flex-start;flex-direction:column}.top h1{font-size:25px}.stats .card{padding:14px}.stat-value{font-size:24px}}
+
+/* V14 appearance system */
+body[data-theme="light"]{--bg:#eef3f9;--panel:#ffffff;--panel2:#e7edf5;--text:#172235;--muted:#5c6b80;--line:#d3dce8;--accent:#2869d8;--accent2:#7655d9;background:linear-gradient(135deg,#f6f9ff,#e8eff8)}
+body[data-theme="light"] .side{background:#ffffffdf}
+body[data-theme="light"] input,body[data-theme="light"] select,body[data-theme="light"] textarea{background:#fff;color:#172235}
+body[data-theme="light"] .plan{background:linear-gradient(145deg,#e4edff,#eee9ff);border-color:#cbd7ef}
+body[data-theme="light"] .mobile-nav{background:#ffffffed}
+body[data-theme="aero"]{--bg:#10223a;--panel:#183552cc;--panel2:#244766cc;--text:#f1f8ff;--muted:#b5c9df;--line:#7393b466;--accent:#7dd3fc;--accent2:#a5b4fc;background:radial-gradient(ellipse at 15% 0%,#4c82b866,transparent 42%),linear-gradient(135deg,#0d1d34,#1b3c5b)}
+body[data-theme="aero"] .card,body[data-theme="aero"] .side,body[data-theme="aero"] .mobile-nav,body[data-theme="aero"] .plan{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+body[data-theme="aero"] .card{background:linear-gradient(145deg,#ffffff16,#8cc9ff08);border-color:#a9d8ff55;box-shadow:inset 0 1px #ffffff22,0 12px 35px #020b1b35}
+body[data-theme="aero"] input,body[data-theme="aero"] select,body[data-theme="aero"] textarea{background:#0c203c99}
+body[data-theme="liquid"]{--bg:#101827;--panel:#ffffff12;--panel2:#ffffff1c;--text:#f5f7ff;--muted:#c0c8d8;--line:#ffffff27;--accent:#a5b4fc;--accent2:#67e8f9;background:radial-gradient(ellipse at 15% 10%,#8067d855,transparent 38%),radial-gradient(ellipse at 90% 85%,#38bdf855,transparent 38%),#101827}
+body[data-theme="liquid"] .card,body[data-theme="liquid"] .side,body[data-theme="liquid"] .mobile-nav,body[data-theme="liquid"] .plan{background:#ffffff12;backdrop-filter:blur(24px) saturate(145%);-webkit-backdrop-filter:blur(24px) saturate(145%);border-color:#ffffff30;box-shadow:inset 0 1px #ffffff24,0 14px 38px #0003}
+body[data-theme="liquid"] input,body[data-theme="liquid"] select,body[data-theme="liquid"] textarea{background:#080f1c77}
+body[data-accent="violet"]{--accent:#a78bfa;--accent2:#818cf8}
+body[data-accent="mint"]{--accent:#5eead4;--accent2:#34d399}
+body[data-accent="rose"]{--accent:#fb91b8;--accent2:#f472b6}
+body[data-accent="amber"]{--accent:#fbbf24;--accent2:#fb923c}
+body[data-density="compact"] .card{padding:14px}
+body[data-density="compact"] .nav button{padding:8px 11px}
+body[data-density="compact"] .grid{gap:10px}
+body[data-font="large"]{font-size:17px}
+body[data-font="large"] .small{font-size:14px}
+body[data-font="large"] input,body[data-font="large"] select,body[data-font="large"] textarea{font-size:16px}
+
+body.premium-motion .card{animation:premiumFloatIn .32s ease-out both}
+@keyframes premiumFloatIn{from{opacity:.82;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+body.premium-motion[data-theme="liquid"] .card{transition:transform .22s ease,box-shadow .22s ease}
+body.premium-motion[data-theme="liquid"] .card:hover{transform:translateY(-2px);box-shadow:inset 0 1px #ffffff30,0 18px 44px #0004}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+ <div class="brand"><div class="logo">D</div><span>Ders Takip</span></div>
+ <nav class="nav" id="sideNav"></nav>
+ <div class="side-bottom"><div class="plan"><small>HESAP DURUMU</small><div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 10px"><b>Ücretsiz kullanım</b><span class="pill">Free</span></div><button class="ghost" style="width:100%" onclick="go('settings')">Hesap ve senkronizasyon</button></div></div>
+</aside>
+<main class="main">
+ <header class="top"><div><div class="eyebrow" id="dateLabel">BUGÜN</div><h1 id="greeting">Merhaba!</h1><div class="muted">Bugün için küçük bir adım, büyük bir ilerleme.</div></div><div class="top-actions"><button id="installAppBtn" class="ghost" style="display:none" onclick="installPWA()">Uygulamayı yükle</button><button class="ghost hide-mobile" onclick="go('calendar')">▦ Takvim</button><button class="ghost" onclick="toast('Bildirim merkezi prototipte yerel olarak hazırlanıyor.')">♧</button><div class="avatar">Ö</div></div></header>
+
+ <section class="section active" id="home">
+  <div class="grid stats">
+   <div class="card"><div class="stat-label">Bugünkü çalışma</div><div class="stat-value" id="statStudy">0 dk</div><div class="stat-foot">Düzenli ilerleme</div></div>
+   <div class="card"><div class="stat-label">Bekleyen görev</div><div class="stat-value" id="statTasks">0</div><div class="stat-foot">Kontrol sende</div></div>
+   <div class="card"><div class="stat-label">Yaklaşan sınav</div><div class="stat-value" id="statExams">0</div><div class="stat-foot">Planını gözden geçir</div></div>
+   <div class="card"><div class="stat-label">Tamamlanan konu</div><div class="stat-value" id="statTopics">0</div><div class="stat-foot">Adım adım</div></div>
+  </div>
+  <div class="grid cols">
+   <div class="card"><div class="card-head"><h2>Görevlerim</h2><button class="ghost small" onclick="go('tasks')">Tümünü gör →</button></div><div class="list" id="homeTasks"></div></div>
+   <div class="card"><div class="card-head"><h2>Hızlı çalışma</h2><span class="pill green">Hazır</span></div><div class="timer" style="padding:10px 0"><div class="time" id="miniTime">25:00</div><div class="muted small" id="timerStatus">Pomodoro · Odaklanma</div><div class="timer-controls"><button class="primary" onclick="toggleTimer()">▶ Başlat</button><button onclick="resetTimer()">Sıfırla</button></div></div><div class="progress"><span style="width:0%" id="studyProgress"></span></div><p class="footer-note">Çalışma oturumunu bir ders veya görevle ilişkilendirebilirsin.</p></div>
+  </div>
+  <div class="grid cols" style="margin-top:16px">
+   <div class="card"><div class="card-head"><h2>Yaklaşan sınavlar</h2><button class="ghost small" onclick="go('exams')">Sınavlar →</button></div><div id="homeExams" class="list"></div></div>
+   <div class="card"><div class="card-head"><h2>Haftalık hedef</h2><span class="pill">Bu hafta</span></div><div style="font-size:28px;font-weight:800" id="weeklyLabel">0 / 300 dk</div><div class="progress" style="margin:12px 0"><span id="weeklyProgress" style="width:0%"></span></div><p class="muted small">Hedefini ayarlardan değiştirebilirsin.</p></div>
+  </div>
+ </section>
+
+
+ <section class="section" id="courses">
+  <div class="section-title"><div><div class="eyebrow">OKUL DÜZENİ</div><h1>Derslerim</h1><div class="muted">Derslerini, öğretmenlerini ve renklerini düzenle.</div></div><button class="primary" onclick="openModal('course')">＋ Ders ekle</button></div>
+  <div class="grid" id="courseGrid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>
+ </section>
+
+
+ <section class="section" id="schedule">
+  <div class="section-title"><div><div class="eyebrow">OKUL PROGRAMI</div><h1>Ders programı</h1><div class="muted">Haftalık derslerini gün ve saatlere göre düzenle.</div></div><button class="primary" onclick="openModal('schedule')">＋ Ders saati ekle · Premium</button></div>
+  <div class="card"><div class="card-head"><h2>Haftalık çizelge</h2><span class="pill">Yerel program</span></div><div class="toolbar" style="flex-wrap:wrap;margin:8px 0 12px"><button onclick="saveScheduleTemplate()">Programı şablon olarak kaydet · Premium</button><select id="scheduleTemplateSelect" style="max-width:220px"><option value="">Şablon seç</option></select><button onclick="loadScheduleTemplate()">Şablonu yükle · Premium</button></div><div id="scheduleGrid" style="overflow:auto"></div></div>
+ </section>
+
+ <section class="section" id="planner">
+  <div class="section-title"><div><div class="eyebrow">HAFTALIK DÜZEN</div><h1>Çalışma planlayıcı</h1><div class="muted">Haftalık çalışma bloklarını oluştur ve tamamladıkça işaretle.</div></div><button class="primary" onclick="openModal('plan')">＋ Plan ekle</button></div>
+  <div class="card"><div class="list" id="plannerList"></div></div>
+ </section>
+
+ <section class="section" id="tests">
+  <div class="section-title"><div><div class="eyebrow">KENDİNİ DENE</div><h1>Testlerim</h1><div class="muted">Kendi çoktan seçmeli mini testlerini oluştur.</div></div><button class="primary" onclick="openModal('test')">＋ Test oluştur</button></div>
+  <div class="card"><div class="list" id="testList"></div></div>
+  <div class="grid cols" style="margin-top:16px"><div class="card"><div class="card-head"><h2>Test geçmişim</h2><span class="pill">Son denemeler</span></div><div class="list" id="testHistoryList"></div></div><div class="card"><div class="card-head"><h2>Tekrar çözmem gerekenler</h2><span class="pill yellow" id="reviewCount">0 soru</span></div><div class="list" id="reviewList"></div></div></div>
+ </section>
+
+
+ <section class="section" id="files">
+  <div class="section-title"><div><div class="eyebrow">KAYNAK MERKEZİ</div><h1>Dosyalarım</h1><div class="muted">Ders notlarını ve çalışma kaynaklarını bu tarayıcıda sakla.</div></div><button class="primary" onclick="document.getElementById('filePicker').click()">＋ Dosya ekle</button><input id="filePicker" type="file" multiple hidden onchange="addFiles(event)"></div>
+  <div class="grid cols"><div class="card"><div class="formrow"><div class="field"><label>Dosyalarda ara</label><input id="fileSearch" placeholder="Dosya adı veya etiket" oninput="renderFiles()"></div><div class="field"><label>Derse göre filtrele</label><select id="fileCourseFilter" onchange="renderFiles()"><option value="">Tüm dersler</option></select></div></div><div class="list" id="fileList"></div></div><div class="card"><h2>Depolama bilgisi</h2><div class="stat-value" id="fileCount">0 dosya</div><div class="muted small" id="fileSize">0 MB kullanılıyor</div><div class="notice">Dosyalar Firebase'e gönderilmez. Tarayıcı depolama sınırına bağlıdır; tarayıcı verilerini temizlemek dosyaları silebilir. Önemli dosyaların ayrıca yedeğini tut.</div></div></div>
+ </section>
+
+ <section class="section" id="habits">
+  <div class="section-title"><div><div class="eyebrow">RUTİN OLUŞTUR</div><h1>Alışkanlıklar</h1><div class="muted">Küçük hedeflerini günlük olarak takip et.</div></div><button class="primary" onclick="openModal('habit')">＋ Alışkanlık ekle</button></div>
+  <div class="grid" id="habitGrid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>
+ </section>
+
+ <section class="section" id="calculator">
+  <div class="section-title"><div><div class="eyebrow">HIZLI ARAÇ</div><h1>Not hesaplayıcı</h1><div class="muted">Sınav notlarının ortalamasını hesapla.</div></div></div>
+  <div class="card" style="max-width:560px"><div class="field"><label>Notlar (virgülle ayır)</label><input id="gradeInputs" placeholder="85, 90, 75"></div><div class="field"><label>Ağırlıklar (isteğe bağlı, aynı sırada)</label><input id="gradeWeights" placeholder="1, 2, 1"></div><button class="primary" onclick="calculateGrades()">Ortalamayı hesapla</button><div id="gradeResult" style="margin-top:18px;font-size:25px;font-weight:800"></div><p class="footer-note">Bu araç basit aritmetik veya ağırlıklı ortalama hesaplar; okulunun resmi not hesaplama yöntemi farklı olabilir.</p></div>
+ </section>
+
+ <section class="section" id="tasks">
+  <div class="section-title"><div><div class="eyebrow">PLANLAMA</div><h1>Görevler</h1><div class="muted">Ödevlerini ve kişisel işlerini tek yerde takip et.</div></div><button class="primary" onclick="openModal('task')">＋ Görev ekle</button></div>
+  <div class="tabs"><button class="active" onclick="filterTasks('all',this)">Tümü</button><button onclick="filterTasks('open',this)">Bekleyen</button><button onclick="filterTasks('done',this)">Tamamlanan</button><button onclick="setPremiumTaskView('overdue')">Gecikenler · Premium</button><button onclick="setPremiumTaskView('archived')">Arşiv · Premium</button></div>
+  <div class="card"><div class="list" id="taskList"></div></div>
+ </section>
+
+ <section class="section" id="timer">
+  <div class="section-title"><div><div class="eyebrow">ODAKLANMA</div><h1>Çalışma sayacı</h1><div class="muted">Çalışma süreni kaydet ve gelişimini izle.</div></div></div>
+  <div class="grid cols"><div class="card timer"><div class="tabs" style="justify-content:center"><button class="active" onclick="setTimerMode('pomodoro',this)">Pomodoro</button><button onclick="setTimerMode('stopwatch',this)">Kronometre</button><button onclick="setTimerMode('countdown',this)">Geri sayım</button><button onclick="setTimerMode('shortbreak',this)">Kısa mola · Premium</button><button onclick="setTimerMode('longbreak',this)">Uzun mola · Premium</button></div><div class="time" id="bigTime">25:00</div><div class="muted" id="bigStatus">Odaklanma süresi</div><div class="field" style="max-width:260px;margin:18px auto 0"><label>Çalışılan ders / konu</label><input id="timerSubject" placeholder="Örn. Matematik · Problemler"></div><div class="timer-controls"><button class="primary" id="timerButton" onclick="toggleTimer()">▶ Başlat</button><button onclick="resetTimer()">Sıfırla</button><button onclick="finishSession()">Kaydet ve bitir</button></div></div><div class="card"><h2>Son oturumlar</h2><div class="list" id="sessionsList" style="margin-top:14px"></div><p class="footer-note">Tarayıcı prototipinde sayaç sekme açıkken çalışır. Kalıcı arka plan takibi ve cihazlar arası senkronizasyon için sonraki aşamada servis/backend gerekir.</p></div></div>
+ </section>
+
+ <section class="section" id="exams">
+  <div class="section-title"><div><div class="eyebrow">HAZIRLIK</div><h1>Sınavlar</h1><div class="muted">Sınav tarihlerini ve sonuçlarını takip et.</div></div><button class="primary" onclick="openModal('exam')">＋ Sınav ekle</button></div>
+  <div class="grid cols" style="margin-bottom:16px"><div class="card"><h2>Genel not ortalaması</h2><div class="stat-value" id="examAverage">—</div><div class="muted small">Ağırlık katsayıları dikkate alınır.</div><div class="field" style="margin-top:14px"><label>Hedef ortalama</label><input id="targetAverage" type="number" min="0" max="100" value="85"></div><div class="formrow"><div class="field"><label>Kalan sınav ağırlığı</label><input id="remainingWeight" type="number" min="0.1" step="0.1" value="1"></div><div class="field"><label>Gerekli ortalama</label><div class="item" id="neededAverage">—</div></div></div><button class="primary" onclick="calculateTargetAverage()">Hedefi hesapla</button></div><div class="card"><h2>Ders bazında ortalamalar</h2><div class="list" id="subjectAverages" style="margin-top:12px"></div></div></div><div class="card" style="margin-bottom:16px"><h2>Not gelişimi</h2><div id="examScoreChart" class="list" style="margin-top:12px"></div></div><div class="card"><div class="list" id="examList"></div></div>
+ </section>
+
+ <section class="section" id="topics">
+  <div class="section-title"><div><div class="eyebrow">MÜFREDAT</div><h1>Konu takibi</h1><div class="muted">Konularını durumlarına göre düzenle.</div></div><button class="primary" onclick="openModal('topic')">＋ Konu ekle</button></div>
+  <div class="card"><div class="list" id="topicList"></div></div>
+ </section>
+
+
+ <section class="section" id="analytics">
+  <div class="section-title"><div><div class="eyebrow">GELİŞİM RAPORU</div><h1>İstatistikler</h1><div class="muted">Çalışma, görev ve konu ilerlemeni incele.</div></div><button onclick="exportData()">Verileri dışa aktar</button></div>
+  <div class="card" style="margin-bottom:16px">
+   <div class="toolbar" style="flex-wrap:wrap;align-items:end">
+    <div class="field" style="min-width:180px;flex:1"><label>Rapor dönemi</label><select id="analyticsPeriod" onchange="renderAnalytics()"><option value="7">Son 7 gün</option><option value="30" selected>Son 30 gün</option><option value="90">Son 3 ay</option><option value="365">Son 12 ay</option><option value="all">Tüm zamanlar</option></select></div>
+    <button onclick="exportAnalyticsCSV()">Raporu CSV indir</button><button onclick="exportAnalyticsPDF()">Yazdır / PDF</button>
+   </div>
+  </div>
+  <div class="grid stats">
+   <div class="card"><div class="stat-label">Dönem çalışma süresi</div><div class="stat-value" id="periodStudy">0 dk</div></div>
+   <div class="card"><div class="stat-label">Görev tamamlama</div><div class="stat-value" id="periodTaskRate">—</div></div>
+   <div class="card"><div class="stat-label">Test denemeleri</div><div class="stat-value" id="periodTestCount">0</div></div>
+   <div class="card"><div class="stat-label">Sınav ortalaması</div><div class="stat-value" id="periodExamAverage">—</div></div>
+  </div>
+  <div class="card" style="margin-bottom:16px"><div class="card-head"><h2>Seçili dönem çalışma grafiği</h2><span class="pill" id="analyticsRangeLabel">Son 30 gün</span></div><div id="periodChart" style="height:190px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(12px,1fr);gap:5px;align-items:end;overflow-x:auto"></div></div>
+  <div class="grid cols" style="margin-bottom:16px"><div class="card"><h2>Görev performansı</h2><div id="taskPerformance"></div></div><div class="card"><h2>Sınav gelişimi</h2><div id="examPerformance"></div></div></div>
+  <div class="grid stats">
+   <div class="card"><div class="stat-label">Toplam çalışma</div><div class="stat-value" id="allStudyStat">0 dk</div></div>
+   <div class="card"><div class="stat-label">Tamamlanan görev</div><div class="stat-value" id="doneTaskStat">0</div></div>
+   <div class="card"><div class="stat-label">Tamamlanan test</div><div class="stat-value" id="doneTestStat">0</div></div>
+   <div class="card"><div class="stat-label">Konu ilerlemesi</div><div class="stat-value" id="topicProgressStat">0%</div></div>
+  </div>
+  <div class="grid cols">
+   <div class="card"><div class="card-head"><h2>Son 7 gün çalışma süresi</h2><span class="pill">Dakika</span></div><div id="weeklyChart" style="display:grid;grid-template-columns:repeat(7,1fr);gap:10px;align-items:end;height:190px"></div></div>
+   <div class="card"><div class="card-head"><h2>Konu durumları</h2></div><div id="topicBreakdown" class="list"></div></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h2>Ders bazında çalışma</h2><div id="courseStudyStats" class="list" style="margin-top:14px"></div></div>
+ </section>
+
+ <section class="section" id="calendar">
+  <div class="section-title"><div><div class="eyebrow">TAKVİM</div><h1>Takvim</h1><div class="muted">Görev ve sınav tarihlerini birlikte görüntüle.</div></div><button onclick="exportCalendar()">.ics dışa aktar · Premium</button></div>
+  <div class="card"><div class="card-head"><h2 id="monthTitle"></h2><div class="toolbar"><button onclick="changeMonth(-1)">‹</button><button onclick="changeMonth(1)">›</button></div></div><div id="calendarGrid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px"></div><p class="footer-note">Google, Apple, Outlook ve Proton ile otomatik/iki yönlü senkronizasyon bu prototipte etkin değil.</p></div>
+ </section>
+
+ <section class="section" id="notes">
+  <div class="section-title"><div><div class="eyebrow">KİŞİSEL ALAN</div><h1>Notlarım</h1><div class="muted">Kısa notlarını cihazında sakla.</div></div><button class="primary" onclick="saveNote()">Kaydet</button></div>
+  <div class="card"><div class="field"><label>Not başlığı</label><input id="noteTitle" placeholder="Örn. Haftalık hedefler"></div><div class="field"><label>Not</label><textarea id="noteBody" placeholder="Notunu buraya yaz..."></textarea></div><div class="notice">Bu sürümde notlar yalnızca kullandığın tarayıcıda saklanır. Günlük için uçtan uca şifreleme ve veli yetkileri, güvenli sunucu altyapısı kurulduktan sonra eklenmelidir.</div><div class="list" id="notesList"></div></div>
+ </section>
+
+
+ <section class="section" id="premium">
+  <div class="section-title"><div><div class="eyebrow">GELİŞMİŞ ÖZELLİKLER</div><h1>Premium</h1><div class="muted">Gelişmiş çalışma araçları.</div></div><span class="pill" id="premiumStatus">Ücretsiz</span></div>
+  <div class="grid cols">
+   <div class="card"><h2>Premium erişimi</h2><p class="muted small">Aktivasyon kodunu gir.</p>
+    <div class="formrow"><div class="field"><label>Aktivasyon kodu</label><input id="premiumCodeInput" type="password" autocomplete="off"></div><div class="field" style="align-self:end"><button class="primary" style="width:100%" onclick="activatePremium()">Etkinleştir</button></div></div>
+    <button onclick="deactivatePremium()">Premium'u kapat</button><span class="muted small" id="premiumCodeStatus"></span>
+    <div class="notice">Bu Beta 1'de erişim yerel prototip kilididir; ödeme veya sunucu lisans doğrulaması değildir.</div>
+   </div>
+   <div class="card"><h2>Karne / gelişim raporu</h2>
+    <div class="grid stats" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+     <div><div class="stat-label">Çalışma</div><div class="stat-value" id="premiumStudyTotal">0 dk</div></div>
+     <div><div class="stat-label">Görev başarısı</div><div class="stat-value" id="premiumTaskRate">—</div></div>
+     <div><div class="stat-label">Sınav ortalaması</div><div class="stat-value" id="premiumExamAverage">—</div></div>
+     <div><div class="stat-label">Çalışma serisi</div><div class="stat-value" id="premiumStreak">0 gün</div></div>
+    </div><button onclick="printPremiumReport()">Karne yazdır</button><h3 style="margin-top:14px">Ders bazlı çalışma raporu</h3><div id="premiumSubjectReport" class="list"></div>
+   </div>
+  </div>
+  <div class="grid cols" style="margin-top:16px">
+   <div class="card"><div class="card-head"><h2>Hatırlatıcılar</h2><span class="pill" id="reminderQuota">Haftada 0/3</span></div>
+    <div class="formrow"><div class="field"><label>Hatırlatıcı</label><input id="reminderTitle" maxlength="100"></div><div class="field"><label>Tarih ve saat</label><input id="reminderAt" type="datetime-local"></div></div>
+    <button class="primary" onclick="addReminder()">Hatırlatıcı ekle</button><div class="list" id="reminderList"></div>
+    <p class="muted small">Ücretsiz: haftada 3. Premium: sınırsız. Uygulama kapalıyken garantili bildirim gönderimi yoktur.</p>
+   </div>
+   <div class="card"><h2>Akıllı öneriler</h2><div class="list" id="smartSuggestions"></div><h3>Sınav + plan</h3><div class="list" id="examPlanOverview"></div></div>
+  </div>
+  <div class="grid cols" style="margin-top:16px">
+   <div class="card"><h2>Görev yönetimi</h2><div class="toolbar" style="flex-wrap:wrap;margin:10px 0">
+    <button onclick="setPremiumTaskView('all')">Tümü</button><button onclick="setPremiumTaskView('overdue')">Gecikenler</button><button onclick="setPremiumTaskView('archived')">Arşiv</button><button onclick="setPremiumTaskView('grouped')">Derslere göre grupla</button>
+   </div><div id="premiumTaskManager" class="list"></div></div>
+   <div class="card"><h2>Gelişmiş sayaç</h2>
+    <div class="field"><label>Odak (dk)</label><input id="premiumFocusMinutes" type="number" min="5" max="180" value="50"></div>
+    <div class="field"><label>Kısa mola (dk)</label><input id="premiumShortBreak" type="number" min="1" max="60" value="10"></div>
+    <div class="field"><label>Uzun mola (dk)</label><input id="premiumLongBreak" type="number" min="5" max="90" value="25"></div>
+    <button class="primary" onclick="saveAdvancedTimer()">Ayarları kaydet</button>
+   </div>
+  </div>
+  <div class="card" style="margin-top:16px"><h2>Premium efektleri</h2>
+   <label class="checkline"><input type="checkbox" id="premiumAnimations" onchange="savePremiumEffects()"> Kart animasyonları</label>
+   <label class="checkline"><input type="checkbox" id="premiumSounds" onchange="savePremiumEffects()"> Tamamlanma sesi</label>
+   <p class="muted small">Aero / Liquid Glass temaları ve efektleri Premium erişimi gerektirir.</p>
+  </div>
+ </section>
+
+ <section class="section" id="settings">
+  <div class="section-title"><div><div class="eyebrow">HESAP VE KİŞİSELLEŞTİRME</div><h1>Ayarlar</h1><div class="muted">Ücretsiz kullanım, hesap ve cihazlar arası senkronizasyon.</div></div></div>
+  <div class="grid cols">
+   <div class="card">
+    <h2>Profil</h2>
+    <div class="field" style="margin-top:14px"><label>Görünen ad</label><input id="userName" value="Öğrenci" onchange="saveSettings()"></div>
+    <div class="notice">Ders Takip'in tüm temel özellikleri ücretsizdir. Bu sürümde ücretli paket, abonelik veya kredi satın alma bulunmaz.</div>
+   </div>
+   <div class="card">
+    <h2>Çalışma hedefi</h2>
+    <div class="field" style="margin-top:14px"><label>Haftalık hedef (dakika)</label><input type="number" id="weeklyGoal" min="30" value="300" onchange="saveSettings()"></div>
+    <div class="field"><label>Varsayılan sayaç (dakika)</label><input type="number" id="pomodoroLength" min="1" max="180" value="25" onchange="saveSettings()"></div>
+    <button class="primary" onclick="saveSettings()">Ayarları kaydet</button>
+   </div>
+  </div>
+
+
+  <div class="card" style="margin-top:16px">
+   <div class="card-head"><h2>Görünüm ve kişiselleştirme</h2><span class="pill">V14</span></div>
+   <div class="formrow">
+    <div class="field"><label>Görünüm teması</label>
+     <select id="appearanceTheme" onchange="saveAppearance()">
+      <option value="midnight">Midnight · Koyu</option>
+      <option value="light">Aydınlık</option>
+      <option value="aero">Aero · Premium</option>
+      <option value="liquid">Liquid Glass · Premium</option>
+     </select>
+    </div>
+    <div class="field"><label>Vurgu rengi</label>
+     <select id="appearanceAccent" onchange="saveAppearance()">
+      <option value="blue">Mavi</option><option value="violet">Mor</option><option value="mint">Mint</option><option value="rose">Pembe</option><option value="amber">Kehribar</option>
+     </select>
+    </div>
+   </div>
+   <div class="formrow">
+    <div class="field"><label>Arayüz yoğunluğu</label>
+     <select id="appearanceDensity" onchange="saveAppearance()">
+      <option value="comfortable">Rahat</option><option value="compact">Kompakt</option>
+     </select>
+    </div>
+    <div class="field"><label>Yazı boyutu</label>
+     <select id="appearanceFont" onchange="saveAppearance()">
+      <option value="normal">Normal</option><option value="large">Büyük</option>
+     </select>
+    </div>
+   </div>
+   <div class="toolbar" style="align-items:center">
+    <button class="primary" onclick="saveAppearance()">Görünümü uygula</button>
+    <button onclick="resetAppearance()">Varsayılana dön</button>
+   </div>
+   <p class="muted small" id="appearanceStatus" style="margin-top:10px">Görünüm tercihleri bu cihazda saklanır.</p>
+   <div class="small muted">Temalar ücretsizdir. Bu ayarlar uygulamanın renklerini ve arayüz yoğunluğunu değiştirir; kayıtlarını silmez.</div>
+  </div>
+  <div class="card" style="margin-top:16px">
+   <div class="card-head"><h2>Firebase hesabı ve senkronizasyon</h2><span class="pill" id="firebaseStatus">Bağlantı kontrol ediliyor</span></div>
+   <p class="muted small">E-posta/şifre ile hesap açabilir veya Google hesabınla giriş yapabilirsin. Giriş yaptığında uygulama verilerin Firestore hesabına kaydedilir. Dosyalar ve ekler cihazında kalır; Firebase Storage kullanılmaz.</p>
+   <div id="authSignedOut">
+    <div class="formrow">
+     <div class="field"><label>E-posta</label><input id="authEmail" type="email" autocomplete="email" placeholder="ornek@mail.com"></div>
+     <div class="field"><label>Şifre</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="En az 6 karakter"></div>
+    </div>
+    <div class="toolbar" style="flex-wrap:wrap">
+     <button class="primary" onclick="registerWithEmail()">Hesap oluştur</button>
+     <button onclick="loginWithEmail()">Giriş yap</button>
+     <button onclick="loginWithGoogle()">Google ile giriş</button>
+     <button onclick="loginWithApple()">Apple ile giriş</button>
+     <button onclick="resetPassword()">Şifremi unuttum</button>
+    </div>
+    <div class="notice" id="authEnvironmentNotice" style="margin-top:12px">Firebase girişi için uygulamayı HTTPS (ör. GitHub Pages) veya localhost üzerinden aç. index.html dosyasına çift tıklayarak file:// üzerinden açarsan Firebase girişi çalışmaz.</div>
+   </div>
+   <div id="authSignedIn" style="display:none">
+    <div class="item"><div class="grow"><div class="item-title" id="authUserEmail">-</div><div class="item-sub">Firebase hesabı bağlı</div></div><button onclick="logoutFirebase()">Çıkış yap</button></div>
+    <div class="toolbar" style="margin-top:12px;flex-wrap:wrap">
+     <button class="primary" onclick="syncNow()">Şimdi senkronize et</button>
+     <button onclick="downloadCloudBackup()">Bulut verisini indir</button>
+    </div>
+   </div>
+   <div class="notice" id="syncMessage" style="margin-top:12px">Giriş yapmadan önce kayıtların bu cihazda tutulur. Giriş yaptığında yerel kayıtları buluta yükleme veya buluttaki kayıtları kullanma seçeneği sunulur.</div>
+   <div class="toolbar" style="margin-top:10px;align-items:center;flex-wrap:wrap">
+    <label class="small" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="autoSyncToggle" onchange="toggleAutoSync(this.checked)" style="width:auto"> Otomatik senkronizasyon</label>
+    <span class="muted small" id="lastSyncLabel">Son senkronizasyon: Henüz yok</span>
+   </div>
+   <div class="small muted" style="margin-top:8px">Otomatik senkronizasyon açıkken yerel değişiklikler kısa bir beklemeden sonra buluta gönderilir. Aynı hesap başka cihazda değiştirildiyse üzerine yazmadan önce uyarı gösterilir.</div>
+   <div id="syncConflictBox" class="notice" style="display:none;margin-top:10px">
+    <b>Senkronizasyon çakışması</b>
+    <p class="small">Bu cihazdaki ve buluttaki kayıtların ikisi de son senkronizasyondan sonra değişmiş. Hangi kopyayı kullanmak istediğini seç.</p>
+    <div class="toolbar" style="flex-wrap:wrap"><button class="primary" onclick="resolveSyncConflict('local')">Bu cihazdakini buluta yükle</button><button onclick="resolveSyncConflict('cloud')">Buluttakini bu cihaza al</button></div>
+   </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+   <h2>Veri ve gizlilik</h2>
+   <p class="muted small">Görev, sınav, konu, ders, not ve çalışma kayıtları yerel olarak saklanır; Firebase hesabına giriş yapıldığında uygulama verileri Firestore ile senkronize edilebilir. Dosya içerikleri, ekler ve dosya verileri buluta gönderilmez. Tarayıcı verilerini silmeden önce JSON yedeği indir.</p>
+   <div class="toolbar" style="flex-wrap:wrap"><button onclick="exportData()">Verilerimi indir (JSON)</button><button onclick="document.getElementById('importFile').click()">Yedekten içe aktar</button><input type="file" id="importFile" accept=".json,application/json" hidden onchange="importData(event)"></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+   <div class="card-head"><h2>Veli ve öğrenci ayarları</h2><span class="pill">V13 hazırlığı</span></div>
+   <p class="muted small">Bu bölüm aile hesabı sisteminin ilk arayüzüdür. Şu anda hesapları birbirine bağlamaz ve verileri başka bir hesaba açmaz. Gerçek bağlantı, güvenli sunucu doğrulaması gerektirir.</p>
+   <div class="field"><label>Bu hesabın rolü</label>
+    <select id="familyRole" onchange="saveFamilySettings()">
+     <option value="student">Öğrenci hesabı</option>
+     <option value="guardian">Veli hesabı</option>
+    </select>
+   </div>
+   <div id="studentFamilySettings">
+    <div class="field"><label>Veli için görünen ad (isteğe bağlı)</label><input id="guardianLabel" maxlength="60" placeholder="Örn. Annem / Babam"></div>
+    <h3 style="margin:12px 0 6px">Paylaşım tercihleri</h3>
+    <p class="muted small">Bunlar şimdilik yalnızca bu cihazda saklanan tercihlerdir; henüz hiçbir veli hesabına veri gönderilmez.</p>
+    <label class="checkline"><input type="checkbox" id="shareTasks"> Görev ve ödev ilerlemem</label>
+    <label class="checkline"><input type="checkbox" id="shareExams"> Sınav tarihleri ve notlarım</label>
+    <label class="checkline"><input type="checkbox" id="shareStudy"> Çalışma sürelerim</label>
+    <label class="checkline"><input type="checkbox" id="shareTopics"> Konu ilerlemem</label>
+    <label class="checkline"><input type="checkbox" id="shareSchedule"> Haftalık ders programım</label>
+    <label class="checkline"><input type="checkbox" id="shareNotes"> Kişisel notlarım</label>
+    <div class="notice" style="margin-top:12px">Kişisel notlar varsayılan olarak paylaşılmaz. Günlük/özel notları aile paylaşımından ayrı tutmak daha güvenlidir.</div>
+   </div>
+   <div id="guardianFamilySettings" style="display:none">
+    <div class="notice">Veli hesabı seçildi. Öğrenci hesabına bağlanma özelliği henüz etkin değil; bu ekrandan öğrenci verilerine erişemezsin.</div>
+    <div class="field" style="margin-top:12px"><label>Öğrenci bağlantı durumu</label><input value="Henüz bağlantı yok" disabled></div>
+   </div>
+   <div class="toolbar" style="margin-top:12px;flex-wrap:wrap">
+    <button class="primary" onclick="saveFamilySettings()">Tercihleri kaydet</button>
+    <button onclick="resetFamilySettings()">Paylaşım tercihlerini sıfırla</button>
+   </div>
+   <div class="small muted" id="familySaveStatus" style="margin-top:8px">Ayarlar bu cihazda saklanır.</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+   <div class="card-head"><h2>Firestore güvenlik kuralları</h2><span class="pill">V15</span></div>
+   <p class="muted small">Bu uygulama veriyi <code>users/{uid}/appData/main</code> yolunda saklar. Aşağıdaki kurallar her hesabın yalnızca kendi ana belgesini okumasına ve yazmasına izin verir. Diğer tüm yollar kapalıdır.</p>
+   <pre id="firestoreRulesText" style="white-space:pre-wrap;overflow:auto;max-height:330px;padding:14px;border-radius:12px;background:#080f1b;border:1px solid var(--line);font-size:12px;line-height:1.55">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId}/appData/{docId} {
+      allow get: if request.auth != null
+                 && request.auth.uid == userId
+                 && docId == 'main';
+      allow list: if false;
+      allow create, update: if request.auth != null
+                            && request.auth.uid == userId
+                            && docId == 'main'
+                            && request.resource.data.keys().hasOnly([
+                              'data', 'updatedAt', 'schemaVersion'
+                            ])
+                            && request.resource.data.data is map;
+      allow delete: if false;
+    }
+    // Herhangi bir eşleşmeyen belge için erişim verilmez.
+  }
+}</pre>
+   <div class="toolbar" style="margin-top:10px;flex-wrap:wrap">
+    <button class="primary" onclick="copyFirestoreRules()">Kuralları kopyala</button>
+   </div>
+   <div class="notice">Kurallar otomatik yayımlanmaz. Firebase Console → Firestore Database → Rules bölümüne yapıştırıp yayımlamalısın. Önce doğru Firebase projesinde olduğunu kontrol et. Bu kurallar veli hesabına başka öğrencinin verisini açmaz.</div>
+   <p class="muted small">Not: Bu kurallar uygulamanın mevcut kullanıcı başına tek belge yapısına göredir. İleride yeni koleksiyonlar eklenirse ayrıca kural yazılmalıdır. Firestore belgeleri 1 MiB sınırını aşamaz; büyük dosyaları uygulama buluta yüklemez.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+   <div class="card-head"><h2>V16 · Son kontrol ve tanılama</h2><span class="pill">Test hazırlığı</span></div>
+   <p class="muted small">Bu panel cihaz ve uygulama durumunu özetler. Tanılama raporuna ders, not, görev başlığı, e-posta veya kişisel kayıt içerikleri eklenmez.</p>
+   <div class="grid cols" style="margin-top:12px">
+    <div class="item"><div class="grow"><div class="item-title">Tarayıcı depolaması</div><div class="item-sub" id="diagStorage">Kontrol ediliyor</div></div><span class="pill" id="diagStorageBadge">…</span></div>
+    <div class="item"><div class="grow"><div class="item-title">İnternet bağlantısı</div><div class="item-sub" id="diagNetwork">Kontrol ediliyor</div></div><span class="pill" id="diagNetworkBadge">…</span></div>
+    <div class="item"><div class="grow"><div class="item-title">PWA / Service Worker</div><div class="item-sub" id="diagPwa">Kontrol ediliyor</div></div><span class="pill" id="diagPwaBadge">…</span></div>
+    <div class="item"><div class="grow"><div class="item-title">Firebase</div><div class="item-sub" id="diagFirebase">Kontrol ediliyor</div></div><span class="pill" id="diagFirebaseBadge">…</span></div>
+   </div>
+   <div class="toolbar" style="margin-top:12px;flex-wrap:wrap">
+    <button class="primary" onclick="runDiagnostics()">Kontrolleri yenile</button>
+    <button onclick="downloadDiagnostics()">Tanılama raporunu indir</button>
+   </div>
+   <p class="muted small" id="diagUpdated" style="margin-top:8px">Rapor yalnızca teknik durum bilgilerini içerir.</p>
+  </div>
+  <div class="card" style="margin-top:16px">
+   <h2>Servis ve güvenlik notları</h2>
+   <p class="muted small">Bu sürüm Firebase Authentication ve Cloud Firestore kullanır. Cloud Storage, Cloud Functions ve Firebase Hosting kullanılmaz. PWA olarak HTTPS üzerinden yayınlandığında uygulama arayüzü çevrimdışı açılabilir; kayıtlar cihazda tutulur ve bağlantı gelince senkronizasyon kuyruğu işlenebilir. Yönetici yetkisi atama ve gerçek veli-öğrenci hesap bağlantısı bu sürümde etkin değildir. V13 aile tercihleri yalnızca yerel ayardır. V15 Firestore kuralları Ayarlar bölümünde kopyalanabilir; Firebase Console'da elle yayımlanmalıdır. V16.1 hata düzeltme paketi: Firebase girişi için HTTPS/localhost kontrolü, Apple giriş düğmesi ve kaydırılabilir yan menü eklendi. Premium özellikler test sonrası belirlenecek. Google ile giriş için Firebase Console'da Google sağlayıcısını etkinleştirip GitHub Pages alan adını yetkili alan adlarına eklemelisin.</p>
+  </div>
+ </section>
+ <div class="footer-note">Ders Takip · İlk çalışan prototip · Veriler bu tarayıcıda saklanır</div>
+</main>
+</div>
+<nav class="mobile-nav" id="mobileNav"></nav>
+<div class="toast" id="toast"></div>
+<div id="modal" style="display:none;position:fixed;inset:0;background:#020711bb;z-index:30;place-items:center;padding:16px">
+ <div class="card" style="width:min(480px,100%);max-height:90vh;overflow:auto">
+  <div class="card-head"><h2 id="modalTitle">Yeni kayıt</h2><button onclick="closeModal()">✕</button></div>
+  <div id="modalBody"></div>
+ </div>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const navItems=[['home','⌂','Genel Bakış'],['courses','▥','Dersler'],['schedule','▦','Ders Programı'],['tasks','☷','Görevler'],['planner','▧','Planlayıcı'],['timer','◷','Çalışma'],['exams','▤','Sınavlar'],['topics','◇','Konular'],['analytics','▤','İstatistikler'],['tests','▣','Testler'],['files','▤','Dosyalar'],['habits','✦','Alışkanlıklar'],['calendar','▦','Takvim'],['notes','✎','Notlar'],['calculator','＋','Hesap makinesi'],['premium','✦','Premium'],['settings','⚙','Ayarlar']];
+const defaults={tasks:[],exams:[],topics:[],sessions:[],notes:[],courses:[],curriculum:[],habits:[],habitLogs:[],tests:[],quizAttempts:[],testReview:[],planner:[],schedule:[],files:[],reminders:[],archivedTasks:[],settings:{name:'Öğrenci',weeklyGoal:300,pomodoro:25,appearance:{theme:'midnight',accent:'blue',density:'comfortable',font:'normal'},family:{role:'student',guardianLabel:'',share:{tasks:false,exams:false,study:false,topics:false,schedule:false,notes:false}}}};
+let data=loadData(),tempTestQuestions=[],activeQuiz=null,quizClock=null,current='home',taskFilter='all',monthCursor=new Date(),timerMode='pomodoro',remaining=(data.settings.pomodoro||25)*60,elapsed=0,running=false,timerInterval=null,sessionStarted=0;
+function loadData(){
+ try{
+  const saved=JSON.parse(localStorage.getItem('dersTakipData')||'{}');
+  if(!saved||typeof saved!=='object'||Array.isArray(saved))return structuredClone(defaults);
+  const merged={...structuredClone(defaults),...saved};
+  merged.settings={...structuredClone(defaults.settings),...(saved.settings||{}),
+   appearance:{...defaults.settings.appearance,...((saved.settings||{}).appearance||{})},
+   family:{...defaults.settings.family,...((saved.settings||{}).family||{}),
+    share:{...defaults.settings.family.share,...(((saved.settings||{}).family||{}).share||{})}}
+  };
+  ['tasks','exams','topics','sessions','notes','courses','curriculum','habits','habitLogs','tests','quizAttempts','testReview','planner','schedule','files','reminders','archivedTasks'].forEach(k=>{
+   if(!Array.isArray(merged[k]))merged[k]=[];
+  });
+  return merged;
+ }catch(e){return structuredClone(defaults)}
+}
+function persist(){try{localStorage.setItem('dersTakipData',JSON.stringify(data))}catch(e){toast('Tarayıcı depolama alanı doldu. Büyük dosyaları kaldır veya dışa aktar.')}renderAll();if(typeof noteLocalChange==='function')noteLocalChange()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function dateText(v){if(!v)return 'Tarih yok';return new Date(v+'T00:00:00').toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'})}
+function today(){return new Date().toISOString().slice(0,10)}
+function go(id){current=id;if(id==='settings'&&typeof runDiagnostics==='function')runDiagnostics();document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('[data-nav]').forEach(x=>x.classList.toggle('active',x.dataset.nav===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='calendar')renderCalendar()}
+
+
+function renderSchedule(){let el=document.getElementById('scheduleGrid');if(!el)return;let days=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'];let arr=data.schedule.slice().sort((a,b)=>days.indexOf(a.day)-days.indexOf(b.day)||a.start.localeCompare(b.start));let out=`<table style="width:100%;border-collapse:collapse;min-width:600px"><thead><tr>${days.map(d=>`<th style="padding:10px;border-bottom:1px solid var(--line);text-align:left;color:var(--muted)">${d}</th>`).join('')}</tr></thead><tbody><tr>${days.map(day=>`<td style="vertical-align:top;padding:7px;border-right:1px solid var(--line);width:14.28%">${arr.filter(x=>x.day===day).map(x=>`<div style="padding:9px;margin-bottom:7px;border-radius:10px;background:#203653;border-left:3px solid var(--accent)"><b style="font-size:12px">${esc(x.course)}</b><div class="small">${x.start}–${x.end}</div><div class="small muted">${esc(x.room||'')}</div><button class="ghost small" onclick="deleteItem('schedule','${x.id}')">Sil</button></div>`).join('')||'<span class="muted small">Boş</span>'}</td>`).join('')}</tr></tbody></table>`;el.innerHTML=out}
+function addSchedule(){if(!requirePremium('Haftalık ders programını düzenleme'))return;let start=document.getElementById('fStart').value,end=document.getElementById('fEnd').value;if(!start||!end||end<=start)return toast('Bitiş saati başlangıçtan sonra olmalı.');data.schedule.push({id:crypto.randomUUID(),course:document.getElementById('fCourse').value,day:document.getElementById('fDay').value,room:document.getElementById('fRoom').value,start,end});closeModal();persist();toast('Ders programına eklendi.')}
+function startQuiz(id){let t=data.tests.find(x=>x.id===id);if(!t)return;let options=t.options||null;if(!options){toast('Bu eski kayıt çoktan seçmeli seçenek içermiyor.');return}document.getElementById('modalTitle').textContent=t.title;document.getElementById('modalBody').innerHTML=`<div class="eyebrow">SORU 1 / 1</div><h3 style="margin:10px 0 18px">${esc(t.question)}</h3><div class="list">${Object.entries(options).map(([k,v])=>`<label class="item" style="cursor:pointer"><input type="radio" name="quizAnswer" value="${k}" style="width:auto">${k}. ${esc(v)}</label>`).join('')}</div><button class="primary" style="width:100%;margin-top:16px" onclick="checkQuiz('${t.id}')">Cevabı kontrol et</button><div id="quizFeedback" style="margin-top:12px"></div>`;document.getElementById('modal').style.display='grid'}
+function checkQuiz(id){let t=data.tests.find(x=>x.id===id),choice=document.querySelector('input[name="quizAnswer"]:checked');if(!choice)return toast('Önce bir seçenek işaretle.');let ok=choice.value===t.answer;t.lastResult={correct:ok,date:today()};persist();document.getElementById('quizFeedback').innerHTML=`<div class="notice" style="border-color:${ok?'#286b55':'#76522c'}">${ok?'Doğru cevap!':'Bu cevap doğru değil.'} Doğru seçenek: ${esc(t.answer)}</div><button onclick="closeModal()">Kapat</button>`}
+
+function renderCourses(){let el=document.getElementById('courseGrid');if(!el)return;el.innerHTML=data.courses.length?data.courses.map(c=>`<div class="card"><div style="width:38px;height:6px;border-radius:99px;background:${esc(c.color)};margin-bottom:14px"></div><div class="card-head"><h2>${esc(c.title)}</h2><button class="ghost" onclick="deleteItem('courses','${c.id}')">✕</button></div><div class="muted small">${esc(c.teacher||'Öğretmen eklenmedi')}</div><p class="small">${esc(c.description||'Henüz açıklama yok.')}</p></div>`).join(''):'<div class="empty">Henüz ders eklenmedi. Derslerini ekleyerek programını kişiselleştirebilirsin.</div>'}
+function addCourse(){let title=document.getElementById('fTitle').value.trim();if(!title)return toast('Ders adı gerekli.');data.courses.push({id:crypto.randomUUID(),title,teacher:document.getElementById('fTeacher').value,color:document.getElementById('fColor').value,description:document.getElementById('fDescription').value});closeModal();persist();toast('Ders eklendi.')}
+function renderPlanner(){let el=document.getElementById('plannerList');if(!el)return;let days=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'];let arr=data.planner.slice().sort((a,b)=>days.indexOf(a.day)-days.indexOf(b.day)||a.time.localeCompare(b.time));el.innerHTML=arr.length?arr.map(p=>`<div class="item"><input class="check" type="checkbox" ${p.done?'checked':''} onchange="togglePlan('${p.id}')"><div class="grow"><div class="item-title">${esc(p.title)}</div><div class="item-sub">${p.day} · ${p.time} · ${p.duration} dk</div></div><button class="ghost" onclick="deleteItem('planner','${p.id}')">✕</button></div>`).join(''):'<div class="empty">Henüz haftalık çalışma planı oluşturulmadı.</div>'}
+function addPlan(){if(!requirePremium('Haftalık gelişmiş çalışma planı'))return;let title=document.getElementById('fTitle').value.trim();if(!title)return toast('Plan başlığı gerekli.');data.planner.push({id:crypto.randomUUID(),title,day:document.getElementById('fDay').value,time:document.getElementById('fTime').value,duration:Math.max(5,Number(document.getElementById('fDuration').value)||30),done:false});closeModal();persist();toast('Çalışma planına eklendi.')}
+function togglePlan(id){let p=data.planner.find(x=>x.id===id);if(p)p.done=!p.done;persist()}
+function renderTests(){let el=document.getElementById('testList');if(!el)return;data.tests.forEach(t=>{if(!t.questions&&t.options)t.questions=[{question:t.question,options:t.options,answer:t.answer}]});el.innerHTML=data.tests.length?data.tests.map(t=>`<div class="item"><div class="grow"><div class="item-title">${esc(t.title)}</div><div class="item-sub">${(t.questions||[]).length} soru</div></div><button class="primary" onclick="startQuiz('${t.id}')">Çöz</button><button class="ghost" onclick="deleteItem('tests','${t.id}')">✕</button></div>`).join(''):'<div class="empty">Henüz test oluşturulmadı.</div>'}
+function appendTestQuestion(){let question=document.getElementById('fQuestion').value.trim(),options={A:document.getElementById('fA').value.trim(),B:document.getElementById('fB').value.trim(),C:document.getElementById('fC').value.trim(),D:document.getElementById('fD').value.trim()},answer=document.getElementById('fAnswer').value;if(!question||Object.values(options).some(x=>!x))return toast('Soru ve dört seçenek gerekli.');tempTestQuestions.push({question,options,answer});document.getElementById('tempQuestionList').textContent=`Teste eklenen soru: ${tempTestQuestions.length}`;['fQuestion','fA','fB','fC','fD'].forEach(id=>document.getElementById(id).value='');}
+function saveMultiTest(){let title=document.getElementById('fTitle').value.trim();if(!title||!tempTestQuestions.length)return toast('Test adı ve en az bir soru gerekli.');data.tests.push({id:crypto.randomUUID(),title,timeLimit:Number(document.getElementById('fTestMinutes').value)||0,questions:tempTestQuestions.slice()});closeModal();persist();toast(`${tempTestQuestions.length} soruluk test kaydedildi.`)}
+function startQuiz(id){let t=data.tests.find(x=>x.id===id);if(!t)return;let questions=t.questions||(t.options?[{question:t.question,options:t.options,answer:t.answer}]:[]);if(!questions.length)return toast('Bu testte çözülebilir soru bulunamadı.');document.getElementById('modalTitle').textContent=t.title;document.getElementById('modalBody').innerHTML=`<div class="eyebrow">${questions.length} SORU</div>${questions.map((q,i)=>`<div class="card" style="margin:12px 0;padding:14px"><b>${i+1}. ${esc(q.question)}</b><div class="list" style="margin-top:10px">${Object.entries(q.options).map(([k,v])=>`<label class="item" style="cursor:pointer"><input type="radio" name="quiz${i}" value="${k}" style="width:auto">${k}. ${esc(v)}</label>`).join('')}</div></div>`).join('')}<button class="primary" style="width:100%" onclick="checkQuiz('${t.id}')">Testi bitir ve sonuçları gör</button><div id="quizFeedback" style="margin-top:12px"></div>`;document.getElementById('modal').style.display='grid'}
+function checkQuiz(id){let t=data.tests.find(x=>x.id===id),questions=t.questions||(t.options?[{question:t.question,options:t.options,answer:t.answer}]:[]),correct=0,answered=0;let detail=questions.map((q,i)=>{let choice=document.querySelector(`input[name="quiz${i}"]:checked`);if(choice){answered++;if(choice.value===q.answer)correct++}return `<div class="item"><div class="grow">Soru ${i+1}</div><span class="pill ${choice&&choice.value===q.answer?'green':'yellow'}">${!choice?'Boş':choice.value===q.answer?'Doğru':'Yanlış'}</span></div>`}).join('');let pct=Math.round(correct/questions.length*100);document.getElementById('quizFeedback').innerHTML=`<div class="card"><div class="stat-value">${correct} / ${questions.length}</div><div class="muted small">Doğru cevap · ${pct}% başarı · ${questions.length-answered} boş</div><div class="list" style="margin-top:12px">${detail}</div></div><button onclick="closeModal()" style="margin-top:10px">Kapat</button>`}
+
+function renderFiles(){let list=document.getElementById('fileList');if(!list)return;let search=(document.getElementById('fileSearch')?.value||'').toLocaleLowerCase('tr'),filter=document.getElementById('fileCourseFilter')?.value||'';let sel=document.getElementById('fileCourseFilter');if(sel){let val=sel.value;sel.innerHTML='<option value="">Tüm dersler</option>'+data.courses.map(c=>`<option value="${esc(c.title)}">${esc(c.title)}</option>`).join('');sel.value=val}let files=data.files.filter(f=>(!filter||f.course===filter)&&(`${f.name} ${f.tags||''}`).toLocaleLowerCase('tr').includes(search));list.innerHTML=files.length?files.map(f=>`<div class="item"><div class="grow"><div class="item-title">${esc(f.name)}</div><div class="item-sub">${esc(f.course||'Derse bağlanmadı')} · ${formatBytes(f.size)} · ${esc(f.tags||'Etiketsiz')}</div></div><button onclick="viewFile('${f.id}')">Aç</button><button class="ghost" onclick="deleteItem('files','${f.id}')">✕</button></div>`).join(''):'<div class="empty">Aramana uygun dosya yok veya henüz dosya eklenmedi.</div>';document.getElementById('fileCount').textContent=data.files.length+' dosya';document.getElementById('fileSize').textContent=formatBytes(data.files.reduce((a,f)=>a+(f.size||0),0))+' toplam'}
+function formatBytes(n){if(n<1024)return n+' B';if(n<1048576)return (n/1024).toFixed(1)+' KB';return (n/1048576).toFixed(2)+' MB'}
+function addFiles(ev){let files=[...ev.target.files];if(!files.length)return;let max=10;if(data.files.length+files.length>max){toast(`Ücretsiz kullanımda en fazla ${max} dosya ekleyebilirsin.`);ev.target.value='';return}files.forEach(file=>{let reader=new FileReader();reader.onload=()=>{let course=prompt('Bu dosya hangi derse ait? Ders adını yazabilir veya boş bırakabilirsin.','')||'';let tags=prompt('Etiket ekle (virgülle ayırabilirsin):','')||'';data.files.push({id:crypto.randomUUID(),name:file.name,type:file.type,size:file.size,course,tags,dataUrl:reader.result});persist();};reader.onerror=()=>toast(file.name+' okunamadı.');reader.readAsDataURL(file)});ev.target.value=''}
+function viewFile(id){let f=data.files.find(x=>x.id===id);if(!f)return;let a=document.createElement('a');a.href=f.dataUrl;a.download=f.name;a.target='_blank';a.click();toast('Dosya yeni sekmede açılmaya veya indirilmeye çalışılıyor.')}
+
+function renderHabits(){let el=document.getElementById('habitGrid');if(!el)return;el.innerHTML=data.habits.length?data.habits.map(h=>{let done=data.habitLogs.includes(h.id+'|'+today());return `<div class="card"><div class="card-head"><h2>${esc(h.title)}</h2><span class="pill">${esc(h.frequency)}</span></div><div class="muted small">Bugünkü durum</div><button class="${done?'':'primary'}" style="width:100%;margin-top:12px" onclick="toggleHabit('${h.id}')">${done?'✓ Bugün tamamlandı':'Bugün tamamla'}</button><button class="ghost small" style="width:100%;margin-top:7px" onclick="deleteItem('habits','${h.id}')">Alışkanlığı sil</button></div>`}).join(''):'<div class="empty">Henüz alışkanlık eklenmedi.</div>'}
+function addHabit(){let title=document.getElementById('fTitle').value.trim();if(!title)return toast('Alışkanlık adı gerekli.');data.habits.push({id:crypto.randomUUID(),title,frequency:document.getElementById('fFrequency').value});closeModal();persist();toast('Alışkanlık eklendi.')}
+function toggleHabit(id){let key=id+'|'+today();data.habitLogs=data.habitLogs.includes(key)?data.habitLogs.filter(x=>x!==key):[...data.habitLogs,key];persist()}
+function calculateGrades(){let vals=document.getElementById('gradeInputs').value.split(',').map(x=>Number(x.trim()));if(!vals.length||vals.some(x=>!Number.isFinite(x)||x<0||x>100))return toast('0–100 arasında geçerli notlar gir.');let weights=document.getElementById('gradeWeights').value.trim();let result;if(weights){let w=weights.split(',').map(Number);if(w.length!==vals.length||w.some(x=>!Number.isFinite(x)||x<=0))return toast('Ağırlık sayısı not sayısıyla aynı ve pozitif olmalı.');result=vals.reduce((a,v,i)=>a+v*w[i],0)/w.reduce((a,b)=>a+b,0)}else result=vals.reduce((a,b)=>a+b,0)/vals.length;document.getElementById('gradeResult').textContent='Ortalama: '+result.toFixed(2)}
+
+
+function showSubtasks(id){let t=data.tasks.find(x=>x.id===id);if(!t||!t.subtasks?.length)return;document.getElementById('modalTitle').textContent='Alt görevler · '+t.title;document.getElementById('modalBody').innerHTML=`<div class="list">${t.subtasks.map((s,i)=>`<label class="item"><input type="checkbox" class="check" ${s.done?'checked':''} onchange="toggleSubtask('${id}',${i})"><span style="${s.done?'text-decoration:line-through;color:var(--muted)':''}">${esc(s.text)}</span></label>`).join('')}</div><button style="width:100%;margin-top:14px" onclick="closeModal()">Kapat</button>`;document.getElementById('modal').style.display='grid'}
+function toggleSubtask(id,i){let t=data.tasks.find(x=>x.id===id);if(t&&t.subtasks?.[i]){t.subtasks[i].done=!t.subtasks[i].done;persist();showSubtasks(id)}}
+
+function analyticsRange(){
+ const p=document.getElementById('analyticsPeriod')?.value||'30';
+ const end=new Date();end.setHours(23,59,59,999);
+ const start=new Date(end);
+ if(p==='all') start.setFullYear(2000,0,1); else start.setDate(start.getDate()-Number(p)+1);
+ const key=d=>d.toISOString().slice(0,10);
+ return {p,start,end,startKey:key(start),endKey:key(end)};
+}
+function renderAnalytics(){
+ const {p,start,end,startKey,endKey}=analyticsRange();
+ const within=d=>!!d&&d>=startKey&&d<=endKey;
+ const sessions=(data.sessions||[]).filter(s=>within(s.date));
+ const tasks=(data.tasks||[]).filter(t=>within(t.date));
+ const exams=(data.exams||[]).filter(e=>within(e.date));
+ const attempts=(data.quizAttempts||[]).filter(a=>within(a.date||a.completedAt?.slice?.(0,10)));
+ const total=sessions.reduce((a,s)=>a+(Number(s.minutes)||0),0);
+ const done=tasks.filter(t=>t.done).length, rate=tasks.length?Math.round(done/tasks.length*100):null;
+ const graded=exams.filter(e=>e.score!==''&&e.score!=null&&Number.isFinite(Number(e.score)));
+ const avg=graded.length?graded.reduce((a,e)=>a+Number(e.score),0)/graded.length:null;
+ const allMinutes=(data.sessions||[]).reduce((a,s)=>a+(Number(s.minutes)||0),0);
+ document.getElementById('allStudyStat').textContent=allMinutes+' dk';
+ document.getElementById('doneTaskStat').textContent=(data.tasks||[]).filter(t=>t.done).length;
+ document.getElementById('doneTestStat').textContent=(data.tests||[]).filter(t=>t.lastResult).length;
+ document.getElementById('topicProgressStat').textContent=data.topics.length?Math.round(data.topics.filter(t=>t.status==='Öğrenildi').length/data.topics.length*100)+'%':'0%';
+ const labels={'7':'Son 7 gün','30':'Son 30 gün','90':'Son 3 ay','365':'Son 12 ay','all':'Tüm zamanlar'};
+ document.getElementById('analyticsRangeLabel').textContent=labels[p]||'Seçili dönem';
+ document.getElementById('periodStudy').textContent=total>=60?(total/60).toFixed(1)+' saat':total+' dk';
+ document.getElementById('periodTaskRate').textContent=rate===null?'—':rate+'%';
+ document.getElementById('periodTestCount').textContent=attempts.length;
+ document.getElementById('periodExamAverage').textContent=avg===null?'—':avg.toFixed(1)+'/100';
+ let days=p==='7'?7:p==='30'?30:p==='90'?90:p==='365'?365:Math.max(7,Math.min(365,Math.ceil((end-start)/86400000)+1));
+ const step=days>120?Math.ceil(days/60):days>45?3:1, buckets=[];
+ for(let back=days-1;back>=0;back-=step){
+  const d=new Date(end);d.setDate(d.getDate()-back);
+  const from=new Date(d);from.setDate(from.getDate()-step+1);
+  const k=x=>x.toISOString().slice(0,10);
+  const mins=sessions.filter(s=>s.date>=k(from)&&s.date<=k(d)).reduce((a,s)=>a+(Number(s.minutes)||0),0);
+  buckets.push({label:step===1?d.toLocaleDateString('tr-TR',{day:'numeric',month:'short'}):d.toLocaleDateString('tr-TR',{month:'short'}),minutes:mins});
+ }
+ const max=Math.max(30,...buckets.map(x=>x.minutes));
+ document.getElementById('periodChart').innerHTML=buckets.map(b=>`<div title="${esc(b.label)}: ${b.minutes} dk" style="height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:4px;min-width:12px"><span class="small muted" style="font-size:9px">${b.minutes||''}</span><div style="width:75%;max-width:28px;height:${Math.max(3,b.minutes/max*135)}px;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:6px 6px 2px 2px"></div><span class="small muted" style="font-size:9px;white-space:nowrap">${esc(b.label)}</span></div>`).join('');
+ document.getElementById('taskPerformance').innerHTML=tasks.length?`<div class="item"><div class="grow">Tamamlanan</div><b>${done}</b></div><div class="item"><div class="grow">Bekleyen</div><b>${tasks.length-done}</b></div><div class="progress"><span style="width:${rate||0}%"></span></div><p class="small muted">${rate}% tamamlanma oranı</p>`:'<div class="empty">Bu dönemde tarihli görev yok.</div>';
+ document.getElementById('examPerformance').innerHTML=graded.length?graded.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||'')).slice(-8).map(e=>`<div class="item"><div class="grow"><div class="item-title">${esc(e.title)}</div><div class="item-sub">${dateText(e.date)}</div><div class="progress" style="margin-top:6px"><span style="width:${Math.max(0,Math.min(100,Number(e.score)))}%"></span></div></div><b>${Number(e.score).toFixed(1)}</b></div>`).join(''):'<div class="empty">Bu dönemde not girilmiş sınav yok.</div>';
+ const statuses=['Başlanmadı','Çalışılıyor','Tekrar edilmeli','Öğrenildi'];
+ document.getElementById('topicBreakdown').innerHTML=statuses.map(st=>`<div class="item"><div class="grow">${st}</div><b>${data.topics.filter(t=>t.status===st).length}</b></div>`).join('');
+ const subjects=[...new Set(sessions.map(s=>s.subject||'Serbest çalışma'))];
+ document.getElementById('courseStudyStats').innerHTML=subjects.length?subjects.map(name=>{let n=sessions.filter(s=>(s.subject||'Serbest çalışma')===name).reduce((a,s)=>a+(Number(s.minutes)||0),0);return `<div class="item"><div class="grow"><div class="item-title">${esc(name)}</div><div class="progress" style="margin-top:7px"><span style="width:${Math.min(100,n/Math.max(1,total)*100)}%"></span></div></div><b>${n} dk</b></div>`}).join(''):'<div class="empty">Bu dönemde çalışma kaydı yok.</div>';
+}
+function exportAnalyticsCSV(){
+ const {startKey,endKey}=analyticsRange(), within=d=>!!d&&d>=startKey&&d<=endKey;
+ const rows=[['Tür','Başlık / Ders','Tarih','Süre (dk)','Durum / Not']];
+ (data.sessions||[]).filter(s=>within(s.date)).forEach(s=>rows.push(['Çalışma',s.subject||'Serbest çalışma',s.date,Number(s.minutes)||0,'']));
+ (data.tasks||[]).filter(t=>within(t.date)).forEach(t=>rows.push(['Görev',t.title,t.date,'',t.done?'Tamamlandı':'Bekliyor']));
+ (data.exams||[]).filter(e=>within(e.date)).forEach(e=>rows.push(['Sınav',e.title,e.date,'',e.score??'Not girilmedi']));
+ const csv='\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\r\n');
+ download('ders-takip-raporu.csv',csv,'text/csv;charset=utf-8');
+}
+function exportAnalyticsPDF(){
+ const period=document.getElementById('analyticsPeriod')?.selectedOptions?.[0]?.textContent||'Seçili dönem';
+ const w=window.open('','_blank'); if(!w)return toast('Yazdırma penceresi engellendi. Açılır pencereye izin ver.');
+ const section=document.getElementById('analytics').cloneNode(true);
+ section.querySelectorAll('button,select').forEach(x=>x.remove());
+ w.document.write('<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>Ders Takip Raporu</title><style>body{font:14px Arial;padding:24px;color:#111}.card{border:1px solid #ccc;padding:12px;margin:10px 0;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.muted{color:#555}.progress{height:8px;background:#ddd}.progress span{display:block;height:8px;background:#567}</style></head><body><h1>Ders Takip — '+period+'</h1>'+section.innerHTML+'</body></html>');
+ w.document.close();w.focus();setTimeout(()=>w.print(),400);
+}
+
+
+// V6: multi-question test runner, timed tests, attempt history and incorrect-question review
+function renderTests(){
+ const el=document.getElementById('testList'); if(!el)return;
+ data.tests.forEach(t=>{if(!t.questions&&t.options)t.questions=[{question:t.question,options:t.options,answer:t.answer}]});
+ el.innerHTML=data.tests.length?data.tests.map(t=>{
+  const qs=t.questions||[], attempts=data.quizAttempts.filter(a=>a.testId===t.id);
+  const best=attempts.length?Math.max(...attempts.map(a=>a.percent)):null;
+  return `<div class="item"><div class="grow"><div class="item-title">${esc(t.title)}</div><div class="item-sub">${qs.length} soru · ${t.timeLimit?`${t.timeLimit} dk`:'Süresiz'} · ${attempts.length} deneme${best!==null?' · En iyi '+best+'%':''}</div></div><button class="primary" onclick="startQuiz('${t.id}')">Çöz</button><button class="ghost" onclick="deleteItem('tests','${t.id}')">✕</button></div>`
+ }).join(''):'<div class="empty">Henüz test oluşturulmadı.</div>';
+}
+function renderTestHistory(){
+ const el=document.getElementById('testHistoryList');if(!el)return;
+ const rows=(data.quizAttempts||[]).slice().reverse().slice(0,12);
+ el.innerHTML=rows.length?rows.map(a=>`<div class="item"><div class="grow"><div class="item-title">${esc(a.testTitle)}</div><div class="item-sub">${dateText(a.date)} · ${a.correct} doğru, ${a.wrong} yanlış, ${a.blank} boş</div></div><b>${a.percent}%</b></div>`).join(''):'<div class="empty">Henüz tamamlanmış test denemesi yok.</div>';
+}
+function renderReviewQueue(){
+ const el=document.getElementById('reviewList');if(!el)return;
+ const rows=data.testReview||[];
+ const count=document.getElementById('reviewCount');if(count)count.textContent=rows.length+' soru';
+ el.innerHTML=rows.length?rows.slice(-8).reverse().map((r,i)=>`<div class="item"><div class="grow"><div class="item-title">${esc(r.testTitle)}</div><div class="item-sub">${esc(r.question).slice(0,90)}</div></div><button class="ghost small" onclick="removeReview(${rows.length-1-i})">Kaldır</button></div>`).join(''):'<div class="empty">Tekrar listende soru yok. Test çözdükçe yanlışların burada birikecek.</div>';
+}
+function startQuiz(id){
+ const t=data.tests.find(x=>x.id===id);if(!t)return;
+ const questions=t.questions||(t.options?[{question:t.question,options:t.options,answer:t.answer}]:[]);
+ if(!questions.length)return toast('Bu testte çözülebilecek soru bulunamadı.');
+ activeQuiz={testId:id,index:0,answers:Array(questions.length).fill(null),started:Date.now(),remaining:(Number(t.timeLimit)||0)*60};
+ if(quizClock)clearInterval(quizClock);
+ if(t.timeLimit){quizClock=setInterval(()=>{if(!activeQuiz)return;activeQuiz.remaining--;if(activeQuiz.remaining<=0){clearInterval(quizClock);quizClock=null;finishQuiz(true)}else{const x=document.getElementById('quizClock');if(x)x.textContent=fmt(activeQuiz.remaining)}},1000)}
+ renderQuizQuestion();
+}
+function renderQuizQuestion(){
+ if(!activeQuiz)return;
+ const t=data.tests.find(x=>x.id===activeQuiz.testId),q=t.questions[activeQuiz.index];
+ const chosen=activeQuiz.answers[activeQuiz.index];
+ document.getElementById('modalTitle').textContent=t.title;
+ document.getElementById('modalBody').innerHTML=`<div class="row" style="justify-content:space-between"><span class="eyebrow">SORU ${activeQuiz.index+1} / ${t.questions.length}</span>${t.timeLimit?`<span class="pill yellow" id="quizClock">${fmt(activeQuiz.remaining)}</span>`:''}</div><div class="progress" style="margin:12px 0"><span style="width:${(activeQuiz.index+1)/t.questions.length*100}%"></span></div><h3 style="margin:14px 0">${esc(q.question)}</h3><div class="list">${Object.entries(q.options).map(([k,v])=>`<label class="item" style="cursor:pointer;border-color:${chosen===k?'var(--accent)':'var(--line)'}"><input type="radio" name="quizAnswer" value="${k}" ${chosen===k?'checked':''} style="width:auto">${k}. ${esc(v)}</label>`).join('')}</div><div class="toolbar" style="margin-top:16px;justify-content:space-between"><button onclick="quizPrevious()" ${activeQuiz.index===0?'disabled':''}>← Önceki</button><button class="primary" onclick="${activeQuiz.index===t.questions.length-1?'finishQuiz(false)':'quizNext()'}">${activeQuiz.index===t.questions.length-1?'Testi bitir':'Sonraki soru →'}</button></div><div class="small muted" style="margin-top:10px">Cevaplamadığın sorular boş sayılır. İstersen önceki sorulara dönebilirsin.</div>`;
+ document.querySelectorAll('input[name="quizAnswer"]').forEach(r=>r.addEventListener('change',()=>{activeQuiz.answers[activeQuiz.index]=r.value;renderQuizQuestion()}));
+ document.getElementById('modal').style.display='grid';
+}
+function quizPrevious(){if(!activeQuiz||activeQuiz.index<=0)return;activeQuiz.index--;renderQuizQuestion()}
+function quizNext(){if(!activeQuiz)return;let t=data.tests.find(x=>x.id===activeQuiz.testId);if(activeQuiz.index<t.questions.length-1){activeQuiz.index++;renderQuizQuestion()}}
+function finishQuiz(timeExpired){
+ if(!activeQuiz)return;
+ if(quizClock){clearInterval(quizClock);quizClock=null}
+ const state=activeQuiz,t=data.tests.find(x=>x.id===state.testId),qs=t.questions||[];
+ let correct=0,wrong=0,blank=0;
+ qs.forEach((q,i)=>{const answer=state.answers[i];if(!answer)blank++;else if(answer===q.answer)correct++;else{wrong++;data.testReview.push({testId:t.id,testTitle:t.title,question:q.question,options:q.options,correctAnswer:q.answer,chosen:answer,date:today()})}});
+ const percent=Math.round(correct/Math.max(1,qs.length)*100);
+ const attempt={id:crypto.randomUUID(),testId:t.id,testTitle:t.title,date:today(),correct,wrong,blank,total:qs.length,percent,durationSeconds:Math.max(0,Math.round((Date.now()-state.started)/1000)),timeExpired:!!timeExpired};
+ data.quizAttempts=data.quizAttempts||[];data.quizAttempts.push(attempt);
+ activeQuiz=null;persist();
+ document.getElementById('modalTitle').textContent='Test sonucu';
+ document.getElementById('modalBody').innerHTML=`<div style="text-align:center;padding:12px"><div class="eyebrow">TEST TAMAMLANDI</div><div class="time">${percent}%</div><h2>${correct} doğru · ${wrong} yanlış · ${blank} boş</h2><p class="muted">${timeExpired?'Süre dolduğu için test otomatik bitirildi.':'Test denemen kaydedildi.'}</p><div class="progress"><span style="width:${percent}%"></span></div><p class="small muted" style="margin-top:14px">Yanlış cevapların tekrar listene eklendi.</p><button class="primary" style="width:100%;margin-top:10px" onclick="closeModal();go('tests')">Testlere dön</button></div>`;
+}
+function removeReview(i){if(!data.testReview||!data.testReview[i])return;data.testReview.splice(i,1);persist()}
+function calculateTargetAverage(){
+ const target=Number(document.getElementById('targetAverage').value),remaining=Number(document.getElementById('remainingWeight').value);
+ const graded=data.exams.filter(e=>e.score!==''&&e.score!=null&&Number.isFinite(Number(e.score)));
+ if(target<0||target>100||!remaining||remaining<0)return toast('Hedef 0–100 arasında ve kalan ağırlık pozitif olmalı.');
+ const currentWeight=graded.reduce((a,e)=>a+(Number(e.weight)||1),0),currentSum=graded.reduce((a,e)=>a+Number(e.score)*(Number(e.weight)||1),0);
+ const needed=(target*(currentWeight+remaining)-currentSum)/remaining;
+ document.getElementById('neededAverage').textContent=needed>100?'100 üstü – hedef mevcut ağırlıkla mümkün görünmüyor':needed<0?'0 – hedef zaten yakalanmış':needed.toFixed(2)+' / 100';
+}
+
+function buildNav(){const make=()=>navItems.map(([id,ic,label])=>`<button data-nav="${id}" onclick="go('${id}')"><span>${ic}</span><span>${label}</span></button>`).join('');document.getElementById('sideNav').innerHTML=make();document.getElementById('mobileNav').innerHTML=navItems.filter(x=>['home','courses','schedule','tasks','files','settings'].includes(x[0])).map(([id,ic,label])=>`<button data-nav="${id}" onclick="go('${id}')"><span style="font-size:18px">${ic}</span>${label}</button>`).join('')}
+function renderAll(){document.getElementById('userName').value=data.settings.name;document.getElementById('weeklyGoal').value=data.settings.weeklyGoal;document.getElementById('pomodoroLength').value=data.settings.pomodoro;document.getElementById('greeting').textContent=`Merhaba, ${data.settings.name||'öğrenci'}!`;document.getElementById('dateLabel').textContent=new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'}).toLocaleUpperCase();renderTasks();renderExams();renderTopics();renderSessions();renderNotes();renderStats();renderTimer();renderCourses();renderPlanner();renderTests();renderTestHistory();renderReviewQueue();renderHabits();renderSchedule();renderFiles();renderAnalytics();renderFamilySettings();renderAppearance();renderPremium()}
+function renderStats(){let done=data.tasks.filter(t=>t.done).length,open=data.tasks.filter(t=>!t.done).length,ex=data.exams.filter(e=>e.date>=today()).length,top=data.topics.filter(t=>t.status==='Öğrenildi').length,mins=data.sessions.filter(s=>s.date===today()).reduce((a,b)=>a+b.minutes,0);document.getElementById('statStudy').textContent=mins+' dk';document.getElementById('statTasks').textContent=open;document.getElementById('statExams').textContent=ex;document.getElementById('statTopics').textContent=top;let goal=Number(data.settings.weeklyGoal)||300;let week=data.sessions.filter(s=>{let d=new Date(s.date+'T00:00:00'),now=new Date();let diff=(now-d)/(86400000);return diff>=0&&diff<7}).reduce((a,b)=>a+b.minutes,0);document.getElementById('weeklyLabel').textContent=`${week} / ${goal} dk`;document.getElementById('weeklyProgress').style.width=Math.min(100,week/goal*100)+'%'}
+function renderTasks(){let list=data.tasks.slice().sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));let filtered=list.filter(t=>!t.archived&&(taskFilter==='all'||(taskFilter==='done'?t.done:!t.done)));document.getElementById('taskList').innerHTML=filtered.length?filtered.map(t=>`<div class="item"><input class="check" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"><div class="grow"><div class="item-title" style="${t.done?'text-decoration:line-through;color:var(--muted)':''}">${esc(t.title)}</div><div class="item-sub">${esc(t.subject||t.category||'Genel')} · ${dateText(t.date)}${t.time?' · '+t.time:''}${t.estimate?' · '+t.estimate+' dk':''}${t.recurrence?' · Tekrar: '+esc(t.recurrence):''}</div>${t.subtasks?.length?`<div class="small muted">${t.subtasks.filter(s=>s.done).length}/${t.subtasks.length} alt görev tamamlandı <button class="ghost small" onclick="showSubtasks('${t.id}')">Aç</button></div>`:''}</div><span class="pill ${t.priority==='Yüksek'?'yellow':''}">${esc(t.priority||'Normal')}</span>${!t.done?`<button class="ghost small" onclick="completeTaskEarly('${t.id}')">Erken bitir</button>`:''}<button class="ghost small" onclick="archiveTask('${t.id}')">Arşivle</button><button class="ghost" onclick="deleteItem('tasks','${t.id}')">✕</button></div>`).join(''):'<div class="empty">Henüz görev yok. İlk görevini ekleyerek başlayabilirsin.</div>';let home=data.tasks.filter(t=>!t.done).slice(0,4);document.getElementById('homeTasks').innerHTML=home.length?home.map(t=>`<div class="item"><input class="check" type="checkbox" onchange="toggleTask('${t.id}')"><div class="grow"><div class="item-title">${esc(t.title)}</div><div class="item-sub">${dateText(t.date)}</div></div></div>`).join(''):'<div class="empty">Bekleyen görev yok.</div>'}
+function renderExams(){let arr=data.exams.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||''));document.getElementById('examList').innerHTML=arr.length?arr.map(e=>`<div class="item"><div class="grow"><div class="item-title">${esc(e.title)}</div><div class="item-sub">${esc(e.subject||'Ders belirtilmedi')} · ${esc(e.type||'Sınav')} · ${dateText(e.date)}</div></div><span class="pill">${e.date>=today()?'Yaklaşıyor':'Geçmiş'}</span>${e.score!==''&&e.score!=null?`<b>${esc(e.score)}/100</b>`:''}<span class="small muted">×${Number(e.weight)||1}</span><button class="ghost" onclick="deleteItem('exams','${e.id}')">✕</button></div>`).join(''):'<div class="empty">Henüz sınav eklenmedi.</div>';let graded=arr.filter(e=>e.score!==''&&e.score!=null&&Number.isFinite(Number(e.score)));let totalW=graded.reduce((a,e)=>a+(Number(e.weight)||1),0);document.getElementById('examAverage').textContent=totalW?(graded.reduce((a,e)=>a+Number(e.score)*(Number(e.weight)||1),0)/totalW).toFixed(2)+'/100':'—';let groups={};graded.forEach(e=>{let k=e.subject||'Diğer';groups[k]??={sum:0,w:0};let w=Number(e.weight)||1;groups[k].sum+=Number(e.score)*w;groups[k].w+=w});document.getElementById('subjectAverages').innerHTML=Object.keys(groups).length?Object.entries(groups).map(([k,v])=>`<div class="item"><div class="grow">${esc(k)}</div><b>${(v.sum/v.w).toFixed(2)}</b></div>`).join(''):'<div class="empty">Not girilmiş sınav yok.</div>';let chart=document.getElementById('examScoreChart');if(chart){let recent=graded.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||'')).slice(-8);chart.innerHTML=recent.length?recent.map(e=>`<div class="item"><div class="grow"><div class="item-title">${esc(e.title)}</div><div class="progress" style="margin-top:6px"><span style="width:${Math.max(0,Math.min(100,Number(e.score)))}%"></span></div></div><b>${Number(e.score).toFixed(1)}</b></div>`).join(''):'<div class="empty">Not grafiği için sınav sonucu ekle.</div>'}let upcoming=arr.filter(e=>e.date>=today()).slice(0,3);document.getElementById('homeExams').innerHTML=upcoming.length?upcoming.map(e=>`<div class="item"><div class="grow"><div class="item-title">${esc(e.title)}</div><div class="item-sub">${dateText(e.date)}</div></div><span class="pill">${Math.max(0,Math.ceil((new Date(e.date)-new Date(today()))/86400000))} gün</span></div>`).join(''):'<div class="empty">Yaklaşan sınav yok.</div>'}
+function renderTopics(){document.getElementById('topicList').innerHTML=data.topics.length?data.topics.map(t=>`<div class="item"><div class="grow"><div class="item-title">${esc(t.title)}</div><div class="item-sub">${esc(t.subject||'Genel')}</div></div><select onchange="updateTopic('${t.id}',this.value)" style="width:auto"><option ${t.status==='Başlanmadı'?'selected':''}>Başlanmadı</option><option ${t.status==='Çalışılıyor'?'selected':''}>Çalışılıyor</option><option ${t.status==='Tekrar edilmeli'?'selected':''}>Tekrar edilmeli</option><option ${t.status==='Öğrenildi'?'selected':''}>Öğrenildi</option></select><button class="ghost" onclick="deleteItem('topics','${t.id}')">✕</button></div>`).join(''):'<div class="empty">Konu eklediğinde ilerlemeni burada takip edebilirsin.</div>'}
+function renderSessions(){document.getElementById('sessionsList').innerHTML=data.sessions.length?data.sessions.slice(-6).reverse().map(s=>`<div class="item"><div class="grow"><div class="item-title">${esc(s.subject||'Serbest çalışma')}</div><div class="item-sub">${dateText(s.date)}</div></div><b>${s.minutes} dk</b></div>`).join(''):'<div class="empty">Henüz çalışma kaydı yok.</div>'}
+function renderNotes(){document.getElementById('notesList').innerHTML=data.notes.length?data.notes.slice().reverse().map(n=>`<div class="item"><div class="grow"><div class="item-title">${esc(n.title)}</div><div class="item-sub">${esc(n.body).slice(0,110)}</div></div><button class="ghost" onclick="deleteItem('notes','${n.id}')">✕</button></div>`).join(''):'<div class="empty">Henüz not eklenmedi.</div>'}
+function openModal(type){let title='',body='';if(type==='task'){title='Yeni görev';body=`<div class="field"><label>Görev adı</label><input id="fTitle" placeholder="Örn. Matematik testini çöz"></div><div class="formrow"><div class="field"><label>Ders</label><input id="fSubject" placeholder="Matematik"></div><div class="field"><label>Kategori</label><select id="fCategory"><option>Okul ödevi</option><option>Özel ders</option><option>Kişisel</option></select></div></div><div class="formrow"><div class="field"><label>Son tarih</label><input id="fDate" type="date"></div><div class="field"><label>Öncelik</label><select id="fPriority"><option>Normal</option><option>Yüksek</option><option>Düşük</option></select></div></div><div class="formrow"><div class="field"><label>Tahmini süre (dk)</label><input id="fEstimate" type="number" min="0" placeholder="Örn. 45"></div><div class="field"><label>Başlangıç saati (isteğe bağlı)</label><input id="fTime" type="time"></div></div><div class="field"><label>Alt görevler (her satıra bir tane)</label><textarea id="fSubtasks" placeholder="Konu anlatımını oku&#10;20 soru çöz"></textarea></div><div class="field"><label>Tekrarlama · Premium</label><select id="fRecurrence"><option value="">Tekrarlama yok</option><option value="daily">Her gün</option><option value="weekly">Her hafta</option><option value="monthly">Her ay</option></select></div><button class="primary" style="width:100%" onclick="addTask()">Görevi kaydet</button>`}if(type==='exam'){title='Yeni sınav';body=`<div class="field"><label>Sınav adı</label><input id="fTitle" placeholder="Örn. Matematik yazılısı"></div><div class="formrow"><div class="field"><label>Ders</label><input id="fSubject" placeholder="Matematik"></div><div class="field"><label>Sınav türü</label><select id="fExamType"><option>Yazılı</option><option>Sözlü</option><option>Uygulamalı</option><option>Deneme</option><option>Diğer</option></select></div></div><div class="formrow"><div class="field"><label>Tarih</label><input id="fDate" type="date"></div><div class="field"><label>Başlangıç saati</label><input id="fTime" type="time"></div></div><div class="formrow"><div class="field"><label>Not (100 üzerinden)</label><input id="fScore" type="number" min="0" max="100" placeholder="Henüz girilmedi"></div><div class="field"><label>Süre (dakika)</label><input id="fDuration" type="number" min="1" value="40"></div></div><div class="field"><label>Ortalama ağırlığı</label><input id="fWeight" type="number" min="0.1" step="0.1" value="1"></div><button class="primary" style="width:100%" onclick="addExam()">Sınavı kaydet</button>`}if(type==='topic'){title='Yeni konu';body=`<div class="field"><label>Konu adı</label><input id="fTitle" placeholder="Örn. Üslü sayılar"></div><div class="field"><label>Ders</label><select id="fSubject">${data.courses.map(c=>`<option>${esc(c.title)}</option>`).join('')||'<option>Genel</option>'}</select></div><div class="formrow"><div class="field"><label>Durum</label><select id="fStatus"><option>Başlanmadı</option><option>Çalışılıyor</option><option>Tekrar edilmeli</option><option>Öğrenildi</option></select></div><div class="field"><label>Hedef tekrar tarihi</label><input id="fReview" type="date"></div></div><button class="primary" style="width:100%" onclick="addTopic()">Konuyu kaydet</button>`}
+if(type==='course'){title='Yeni ders';body=`<div class="field"><label>Ders adı</label><input id="fTitle" placeholder="Örn. Matematik"></div><div class="formrow"><div class="field"><label>Öğretmen</label><input id="fTeacher" placeholder="Öğretmen adı"></div><div class="field"><label>Renk</label><input id="fColor" type="color" value="#76a9ff" style="height:44px;padding:4px"></div></div><div class="field"><label>Açıklama</label><input id="fDescription" placeholder="İsteğe bağlı"></div><button class="primary" style="width:100%" onclick="addCourse()">Dersi kaydet</button>`}
+if(type==='schedule'){title='Ders programına ekle';body=`<div class="field"><label>Ders</label><select id="fCourse">${data.courses.map(c=>`<option>${esc(c.title)}</option>`).join('')||'<option>Genel ders</option>'}</select></div><div class="formrow"><div class="field"><label>Gün</label><select id="fDay"><option>Pazartesi</option><option>Salı</option><option>Çarşamba</option><option>Perşembe</option><option>Cuma</option><option>Cumartesi</option><option>Pazar</option></select></div><div class="field"><label>Derslik / sınıf</label><input id="fRoom" placeholder="İsteğe bağlı"></div></div><div class="formrow"><div class="field"><label>Başlangıç</label><input id="fStart" type="time" value="08:30"></div><div class="field"><label>Bitiş</label><input id="fEnd" type="time" value="09:10"></div></div><button class="primary" style="width:100%" onclick="addSchedule()">Programa ekle</button>`}
+if(type==='plan'){title='Çalışma planı';body=`<div class="field"><label>Çalışma başlığı</label><input id="fTitle" placeholder="Örn. Fen – Hücre"></div><div class="formrow"><div class="field"><label>Gün</label><select id="fDay"><option>Pazartesi</option><option>Salı</option><option>Çarşamba</option><option>Perşembe</option><option>Cuma</option><option>Cumartesi</option><option>Pazar</option></select></div><div class="field"><label>Saat</label><input id="fTime" type="time" value="17:00"></div></div><div class="field"><label>Süre (dakika)</label><input id="fDuration" type="number" min="5" value="30"></div><button class="primary" style="width:100%" onclick="addPlan()">Plana ekle</button>`}
+if(type==='test'){title='Çok sorulu test oluştur';tempTestQuestions=[];body=`<div class="field"><label>Test adı</label><input id="fTitle" placeholder="Örn. Kesirler"></div><div class="field"><label>Süre sınırı (dakika, isteğe bağlı)</label><input id="fTestMinutes" type="number" min="1" max="240" placeholder="Boş bırakılırsa süresiz"></div><div class="field"><label>Soru</label><textarea id="fQuestion" placeholder="Sorunu yaz..."></textarea></div><div class="formrow"><div class="field"><label>A seçeneği</label><input id="fA" placeholder="Seçenek A"></div><div class="field"><label>B seçeneği</label><input id="fB" placeholder="Seçenek B"></div><div class="field"><label>C seçeneği</label><input id="fC" placeholder="Seçenek C"></div><div class="field"><label>D seçeneği</label><input id="fD" placeholder="Seçenek D"></div></div><div class="field"><label>Doğru seçenek</label><select id="fAnswer"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></div><button onclick="appendTestQuestion()">＋ Soruyu teste ekle</button><div id="tempQuestionList" class="small muted" style="margin:10px 0">Henüz soru eklenmedi.</div><button class="primary" style="width:100%;margin-top:8px" onclick="saveMultiTest()">Testi kaydet</button>`}
+if(type==='habit'){title='Yeni alışkanlık';body=`<div class="field"><label>Alışkanlık</label><input id="fTitle" placeholder="Örn. 20 dakika kitap oku"></div><div class="field"><label>Hedef sıklığı</label><select id="fFrequency"><option>Her gün</option><option>Hafta içi</option><option>Haftada 3 gün</option></select></div><button class="primary" style="width:100%" onclick="addHabit()">Alışkanlığı ekle</button>`}
+document.getElementById('modalTitle').textContent=title;document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').style.display='grid'}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function addTask(){if((document.getElementById('fRecurrence')?.value||'')&&!requirePremium('Tekrarlanan görevler'))return;let title=document.getElementById('fTitle').value.trim();if(!title)return toast('Görev adı gerekli.');if(!warnEventConflict(document.getElementById('fDate').value,document.getElementById('fTime')?.value,Number(document.getElementById('fEstimate').value)||30))return;data.tasks.push({id:crypto.randomUUID(),title,subject:document.getElementById('fSubject').value,category:document.getElementById('fCategory').value,date:document.getElementById('fDate').value,time:document.getElementById('fTime')?.value||'',duration:Number(document.getElementById('fEstimate').value)||0,priority:document.getElementById('fPriority').value,estimate:Number(document.getElementById('fEstimate').value)||0,recurrence:(document.getElementById('fRecurrence')?.value||''),subtasks:(document.getElementById('fSubtasks').value||'').split(/\\r?\\n/).map(x=>x.trim()).filter(Boolean).map(text=>({text,done:false})),done:false});closeModal();persist();toast('Görev eklendi.')}
+function addExam(){let title=document.getElementById('fTitle').value.trim(),score=document.getElementById('fScore').value,weight=Number(document.getElementById('fWeight').value)||1;if(!title)return toast('Sınav adı gerekli.');if(score!==''&&(Number(score)<0||Number(score)>100))return toast('Not 0 ile 100 arasında olmalı.');if(!warnEventConflict(document.getElementById('fDate').value,document.getElementById('fTime')?.value,Number(document.getElementById('fDuration')?.value)||40))return;data.exams.push({id:crypto.randomUUID(),title,subject:document.getElementById('fSubject').value,date:document.getElementById('fDate').value,time:document.getElementById('fTime')?.value||'',duration:Number(document.getElementById('fDuration')?.value)||40,score,type:document.getElementById('fExamType').value,weight});closeModal();persist();toast('Sınav ve not bilgisi kaydedildi.')}
+function addTopic(){let title=document.getElementById('fTitle').value.trim();if(!title)return toast('Konu adı gerekli.');data.topics.push({id:crypto.randomUUID(),title,subject:document.getElementById('fSubject').value,status:document.getElementById('fStatus').value,review:document.getElementById('fReview').value});closeModal();persist();toast('Konu eklendi.')}
+function toggleTask(id){let t=data.tasks.find(x=>x.id===id);if(!t)return;t.done=!t.done;if(t.done&&t.recurrence&&isPremium()&&!t.recurrenceGenerated){const n=new Date((t.date||today())+'T00:00:00');if(t.recurrence==='daily')n.setDate(n.getDate()+1);if(t.recurrence==='weekly')n.setDate(n.getDate()+7);if(t.recurrence==='monthly')n.setMonth(n.getMonth()+1);data.tasks.push({...JSON.parse(JSON.stringify(t)),id:crypto.randomUUID(),date:n.toISOString().slice(0,10),done:false,recurrenceGenerated:false});t.recurrenceGenerated=true;}if(t.done)playPremiumSound();persist()}
+function updateTopic(id,status){let t=data.topics.find(x=>x.id===id);if(t)t.status=status;persist()}
+function deleteItem(key,id){if(!confirm('Bu kaydı silmek istiyor musun?'))return;data[key]=data[key].filter(x=>x.id!==id);persist()}
+function filterTasks(f,el){taskFilter=f;document.querySelectorAll('#tasks .tabs button').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderTasks()}
+function timerDurationMinutes(mode){
+ if(mode==='shortbreak')return Number(data.settings.premiumShortBreak)||10;
+ if(mode==='longbreak')return Number(data.settings.premiumLongBreak)||25;
+ if(mode==='pomodoro'&&isPremium())return Number(data.settings.premiumFocusMinutes)||50;
+ return Number(data.settings.pomodoro)||25;
+}
+function setTimerMode(mode,el){
+ if(['shortbreak','longbreak'].includes(mode)&&!requirePremium('Gelişmiş molalar'))return;
+ if(running)return toast('Önce çalışan sayacı durdur.');
+ timerMode=mode;document.querySelectorAll('#timer .tabs button').forEach(b=>b.classList.remove('active'));
+ if(el)el.classList.add('active');resetTimer();
+}
+function renderTimer(){
+ let txt=timerMode==='stopwatch'?fmt(elapsed):fmt(remaining);
+ document.getElementById('bigTime').textContent=txt;document.getElementById('miniTime').textContent=txt;
+ const labels={pomodoro:'Pomodoro · Odaklanma',stopwatch:'Kronometre',countdown:'Geri sayım',shortbreak:'Kısa mola',longbreak:'Uzun mola'};
+ document.getElementById('timerStatus').textContent=labels[timerMode]||'Odaklanma';
+ document.getElementById('bigStatus').textContent=timerMode==='stopwatch'?'Geçen süre':(timerMode==='shortbreak'||timerMode==='longbreak')?'Mola süresi':timerMode==='countdown'?'Geri sayım':'Odaklanma süresi';
+ document.getElementById('timerButton').textContent=running?'Ⅱ Duraklat':'▶ Başlat';
+}
+function fmt(sec){return `${String(Math.floor(sec/60)).padStart(2,'0')}:${String(sec%60).padStart(2,'0')}`}
+function toggleTimer(){if(running){running=false;clearInterval(timerInterval);renderTimer();return}running=true;sessionStarted=Date.now();timerInterval=setInterval(()=>{if(timerMode==='stopwatch')elapsed++;else{remaining--;if(remaining<=0){remaining=0;running=false;clearInterval(timerInterval);toast('Süre tamamlandı. Oturumu kaydedebilirsin.')}}renderTimer()},1000);renderTimer()}
+function resetTimer(){running=false;clearInterval(timerInterval);elapsed=0;remaining=timerDurationMinutes(timerMode)*60;renderTimer()}
+function finishSession(){
+ if(running){running=false;clearInterval(timerInterval)}
+ if(timerMode==='shortbreak'||timerMode==='longbreak'){resetTimer();toast('Mola tamamlandı.');return}
+ const totalSeconds=timerDurationMinutes(timerMode)*60;
+ const mins=timerMode==='stopwatch'?Math.floor(elapsed/60):Math.max(0,Math.round((totalSeconds-remaining)/60));
+ if(mins<1)return toast('Kaydedilecek çalışma süresi bulunamadı.');
+ data.sessions.push({id:crypto.randomUUID(),date:today(),minutes:mins,subject:document.getElementById('timerSubject').value.trim()});
+ resetTimer();persist();toast(`${mins} dakikalık çalışma kaydedildi.`);
+}
+function saveNote(){let title=document.getElementById('noteTitle').value.trim(),body=document.getElementById('noteBody').value.trim();if(!title||!body)return toast('Başlık ve not alanlarını doldur.');data.notes.push({id:crypto.randomUUID(),title,body});document.getElementById('noteTitle').value='';document.getElementById('noteBody').value='';persist();toast('Not kaydedildi.')}
+function saveSettings(){data.settings.name=document.getElementById('userName').value||'Öğrenci';data.settings.weeklyGoal=Math.max(30,Number(document.getElementById('weeklyGoal').value)||300);data.settings.pomodoro=Math.min(180,Math.max(1,Number(document.getElementById('pomodoroLength').value)||25));if(!running)resetTimer();persist();toast('Ayarlar kaydedildi.')}
+function changeMonth(n){monthCursor.setMonth(monthCursor.getMonth()+n);renderCalendar()}
+function renderCalendar(){let y=monthCursor.getFullYear(),m=monthCursor.getMonth(),first=new Date(y,m,1),days=new Date(y,m+1,0).getDate(),offset=(first.getDay()+6)%7;document.getElementById('monthTitle').textContent=first.toLocaleDateString('tr-TR',{month:'long',year:'numeric'});let names=['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'];let out=names.map(n=>`<div class="muted small" style="text-align:center;padding:8px 0">${n}</div>`).join('');for(let i=0;i<offset;i++)out+='<div></div>';for(let d=1;d<=days;d++){let key=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,tasks=data.tasks.filter(t=>t.date===key).length,ex=data.exams.filter(e=>e.date===key).length;out+=`<div style="min-height:75px;padding:7px;border:1px solid var(--line);border-radius:10px;background:${key===today()?'#203858':'#101a2a'}"><b>${d}</b>${tasks?`<div class="small" style="color:var(--accent)">${tasks} görev</div>`:''}${ex?`<div class="small" style="color:var(--warn)">${ex} sınav</div>`:''}</div>`}document.getElementById('calendarGrid').innerHTML=out}
+function exportCalendar(){if(!requirePremium('Takvim dışa aktarma'))return;let entries=[...data.tasks.map(t=>({title:t.title,date:t.date})),...data.exams.map(e=>({title:e.title,date:e.date}))].filter(x=>x.date);let lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Ders Takip//TR'];entries.forEach((e,i)=>lines.push('BEGIN:VEVENT',`UID:${i}-${Date.now()}@derstakip`,`DTSTAMP:${new Date().toISOString().replace(/[-:]/g,'').split('.')[0]}Z`,`DTSTART;VALUE=DATE:${e.date.replace(/-/g,'')}`,`SUMMARY:${e.title.replace(/[,;\\]/g,' ')}`,'END:VEVENT'));lines.push('END:VCALENDAR');download('ders-takip.ics',lines.join('\r\n'),'text/calendar');}
+function download(name,content,type){let a=document.createElement('a'),u=URL.createObjectURL(new Blob([content],{type}));a.href=u;a.download=name;a.click();URL.revokeObjectURL(u)}
+function exportData(){download('ders-takip-yedek-v16.json',JSON.stringify({app:'Ders Takip',backupVersion:16.1,exportedAt:new Date().toISOString(),containsLocalFiles:true,data},null,2),'application/json')}
+function importData(ev){
+ const f=ev.target.files?.[0];if(!f)return;
+ if(f.size>10*1024*1024){toast('Yedek dosyası 10 MB sınırını aşıyor.');ev.target.value='';return;}
+ const r=new FileReader();
+ r.onload=()=>{
+  try{
+   const parsed=JSON.parse(r.result),v=parsed.data||parsed;
+   if(!v||typeof v!=='object'||!v.settings||typeof v.settings!=='object')throw new Error('invalid');
+   const arrayKeys=['tasks','exams','topics','sessions','notes','courses','curriculum','habits','habitLogs','tests','quizAttempts','testReview','planner','schedule','files'];
+   for(const k of arrayKeys){if(v[k]!==undefined&&!Array.isArray(v[k]))throw new Error('invalid');}
+   if(!confirm('Mevcut verilerin yedekten gelen verilerle değiştirilmesini onaylıyor musun?'))return;
+   data={...structuredClone(defaults),...v,
+    settings:{...structuredClone(defaults.settings),...v.settings,
+     appearance:{...defaults.settings.appearance,...(v.settings.appearance||{})},
+     family:{...defaults.settings.family,...(v.settings.family||{}),
+      share:{...defaults.settings.family.share,...((v.settings.family||{}).share||{})}}
+    }};
+   persist();toast('Yedek içe aktarıldı.');
+  }catch(e){toast('Dosya okunamadı veya yedek biçimi geçersiz.');}
+  finally{ev.target.value='';}
+ };
+ r.readAsText(f);
+}
+function toast(msg){let el=document.getElementById('toast');el.textContent=msg;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2800)}
+
+
+
+
+
+
+let premiumTaskView='all';
+function isPremium(){return data.settings.premiumActive===true}
+function requirePremium(feature){if(isPremium())return true;toast(feature+' Premium özelliğidir. Premium bölümünden etkinleştir.');return false}
+function activatePremium(){const el=document.getElementById('premiumCodeInput');if((el?.value||'').trim()==='NPM5'){data.settings.premiumActive=true;data.settings.premiumActivatedAt=new Date().toISOString();if(el)el.value='';persist();toast('Premium özellikler açıldı.')}else toast('Kod geçersiz.')}
+function deactivatePremium(){data.settings.premiumActive=false;delete data.settings.premiumActivatedAt;if(['aero','liquid'].includes(data.settings.appearance?.theme))data.settings.appearance.theme='midnight';data.settings.premiumAnimations=false;data.settings.premiumSounds=false;persist();toast('Premium kapatıldı.')}
+function setPremiumTaskView(v){if(['overdue','archived','grouped'].includes(v)&&!requirePremium('Gelişmiş görev yönetimi'))return;premiumTaskView=v;renderPremiumTaskManager();go('premium')}
+function archiveTask(id){if(!requirePremium('Görev arşivi'))return;const t=data.tasks.find(x=>x.id===id);if(t)t.archived=true;persist()}
+function restoreTask(id){if(!requirePremium('Görev arşivi'))return;const t=data.tasks.find(x=>x.id===id);if(t)t.archived=false;persist()}
+function completeTaskEarly(id){if(!requirePremium('Erken bitirme'))return;const t=data.tasks.find(x=>x.id===id);if(!t)return;t.done=true;t.completedAt=new Date().toISOString();t.completedEarly=!!(t.date&&t.date>today());playPremiumSound();persist()}
+function renderPremiumTaskManager(){const el=document.getElementById('premiumTaskManager');if(!el)return;if(!isPremium()){el.innerHTML='<div class="notice">Gelişmiş görev gruplama, gecikenler ve arşiv Premium özelliğidir.</div>';return;}const active=(data.tasks||[]).filter(t=>!t.archived);let items=[];if(premiumTaskView==='overdue')items=active.filter(t=>!t.done&&t.date&&t.date<today());else if(premiumTaskView==='archived')items=(data.tasks||[]).filter(t=>t.archived);else if(premiumTaskView==='grouped'){const g={};active.forEach(t=>{const k=t.subject||'Diğer';(g[k]??=[]).push(t)});el.innerHTML=Object.entries(g).map(([k,a])=>`<div class="card"><b>${esc(k)}</b>${a.map(t=>`<div class="item"><span class="grow">${esc(t.title)}</span><span class="pill">${t.done?'Bitti':'Bekliyor'}</span></div>`).join('')}</div>`).join('')||'<div class="empty">Görev yok.</div>';return}else items=active;el.innerHTML=items.length?items.map(t=>`<div class="item"><div class="grow"><b>${esc(t.title)}</b><div class="item-sub">${esc(t.subject||'Genel')} · ${dateText(t.date)}</div></div>${t.archived?`<button onclick="restoreTask('${t.id}')">Geri yükle</button>`:`<button onclick="archiveTask('${t.id}')">Arşivle</button>`}</div>`).join(''):'<div class="empty">Bu görünümde görev yok.</div>'}
+function weekStartKey(){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.toISOString().slice(0,10)}
+function addReminder(){const title=document.getElementById('reminderTitle')?.value.trim(),at=document.getElementById('reminderAt')?.value;if(!title||!at)return toast('Hatırlatıcı adı ve tarihi gerekli.');const start=weekStartKey(),count=(data.reminders||[]).filter(r=>r.createdAt&&r.createdAt.slice(0,10)>=start).length;if(!isPremium()&&count>=3)return toast('Ücretsiz kullanımda haftalık 3 hatırlatıcı sınırı var.');data.reminders=data.reminders||[];data.reminders.push({id:crypto.randomUUID(),title,at:new Date(at).toISOString(),createdAt:new Date().toISOString(),done:false});document.getElementById('reminderTitle').value='';document.getElementById('reminderAt').value='';persist();toast('Hatırlatıcı eklendi.')}
+function deleteReminder(id){data.reminders=(data.reminders||[]).filter(r=>r.id!==id);persist()}
+function renderReminders(){const el=document.getElementById('reminderList');if(!el)return;const start=weekStartKey(),count=(data.reminders||[]).filter(r=>r.createdAt&&r.createdAt.slice(0,10)>=start).length;const q=document.getElementById('reminderQuota');if(q)q.textContent=isPremium()?'Sınırsız':`Haftada ${count}/3`;el.innerHTML=(data.reminders||[]).slice().sort((a,b)=>a.at.localeCompare(b.at)).map(r=>`<div class="item"><div class="grow"><b>${esc(r.title)}</b><div class="item-sub">${new Date(r.at).toLocaleString('tr-TR')}</div></div><button onclick="deleteReminder('${r.id}')">Sil</button></div>`).join('')||'<div class="empty">Henüz hatırlatıcı yok.</div>'}
+function streakCount(){const days=new Set((data.sessions||[]).filter(s=>s.minutes>0).map(s=>s.date));let d=new Date(),n=0;while(days.has(d.toISOString().slice(0,10))){n++;d.setDate(d.getDate()-1)}return n}
+function renderPremiumReport(){if(!isPremium()){['premiumStudyTotal','premiumTaskRate','premiumExamAverage','premiumStreak'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='Premium ile açılır'});const se=document.getElementById('premiumSubjectReport');if(se)se.innerHTML='<div class="notice">Ders bazlı rapor Premium özelliğidir.</div>';return;}const total=(data.sessions||[]).reduce((a,s)=>a+(Number(s.minutes)||0),0),tasks=data.tasks||[],done=tasks.filter(t=>t.done).length,graded=(data.exams||[]).filter(e=>e.score!==''&&e.score!=null&&Number.isFinite(Number(e.score))),w=graded.reduce((a,e)=>a+(Number(e.weight)||1),0),avg=w?graded.reduce((a,e)=>a+Number(e.score)*(Number(e.weight)||1),0)/w:null;const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};set('premiumStudyTotal',total>=60?(total/60).toFixed(1)+' saat':total+' dk');set('premiumTaskRate',tasks.length?Math.round(done/tasks.length*100)+'%':'—');set('premiumExamAverage',avg===null?'—':avg.toFixed(1));set('premiumStreak',streakCount()+' gün');
+ const se=document.getElementById('premiumSubjectReport');
+ if(se){const by={};(data.sessions||[]).forEach(s=>{const k=s.subject||'Genel';by[k]=(by[k]||0)+(Number(s.minutes)||0)});se.innerHTML=Object.entries(by).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="item"><span class="grow">${esc(k)}</span><b>${v} dk</b></div>`).join('')||'<div class="empty">Henüz ders bazlı çalışma kaydı yok.</div>';}
+}
+function renderSmartSuggestions(){const el=document.getElementById('smartSuggestions');if(!el)return;const overdue=(data.tasks||[]).filter(t=>!t.done&&!t.archived&&t.date&&t.date<today()).length,next=(data.exams||[]).filter(e=>e.date>=today()).sort((a,b)=>a.date.localeCompare(b.date))[0],low=(data.topics||[]).filter(t=>t.status==='Tekrar edilmeli').length,s=[];if(overdue)s.push(`Önce ${overdue} geciken görevi gözden geçir.`);if(next)s.push(`${next.title} sınavı ${dateText(next.date)} tarihinde. Kısa tekrar planla.`);if(low)s.push(`${low} konu tekrar bekliyor.`);if(!s.length)s.push('Haftalık hedefini takip etmeye devam et.');el.innerHTML=s.slice(0,isPremium()?5:2).map(x=>`<div class="item">${esc(x)}</div>`).join('');const ep=document.getElementById('examPlanOverview');if(ep){if(!isPremium()){ep.innerHTML='<div class="notice">Sınav ve planı birlikte görüntüleme Premium özelliğidir.</div>';return;}const a=(data.exams||[]).filter(e=>e.date>=today()).sort((x,y)=>x.date.localeCompare(y.date)).slice(0,5);ep.innerHTML=a.map(e=>`<div class="item"><div class="grow"><b>${esc(e.title)}</b><div class="item-sub">${dateText(e.date)} · ${esc(e.subject||'Ders belirtilmedi')}</div></div><span class="pill">${(data.planner||[]).filter(p=>(p.title||'').toLowerCase().includes((e.subject||'').toLowerCase())).length} plan</span></div>`).join('')||'<div class="empty">Yaklaşan sınav yok.</div>'}}
+function renderPremium(){const active=isPremium(),s=document.getElementById('premiumStatus');if(s)s.textContent=active?'Etkin':'Ücretsiz';const c=document.getElementById('premiumCodeStatus');if(c)c.textContent=active?'Premium bu cihazda etkin':'Etkinleştirme bekleniyor';['premiumAnimations','premiumSounds','premiumFocusMinutes','premiumShortBreak','premiumLongBreak'].forEach(id=>{const e=document.getElementById(id);if(!e)return;if(id==='premiumAnimations')e.checked=!!data.settings.premiumAnimations;else if(id==='premiumSounds')e.checked=!!data.settings.premiumSounds;else e.value=data.settings[id]||({premiumFocusMinutes:50,premiumShortBreak:10,premiumLongBreak:25}[id])});document.body.classList.toggle('premium-motion',active&&!!data.settings.premiumAnimations);renderPremiumReport();renderReminders();renderSmartSuggestions();renderPremiumTaskManager()}
+function savePremiumEffects(){if(!requirePremium('Animasyon ve ses efektleri'))return renderPremium();data.settings.premiumAnimations=!!document.getElementById('premiumAnimations')?.checked;data.settings.premiumSounds=!!document.getElementById('premiumSounds')?.checked;persist()}
+function playPremiumSound(){if(!isPremium()||!data.settings.premiumSounds)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=660;g.gain.value=.035;o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+.11);o.onended=()=>c.close()}catch(e){}}
+function saveAdvancedTimer(){if(!requirePremium('Gelişmiş sayaç'))return;data.settings.premiumFocusMinutes=Math.min(180,Math.max(5,Number(document.getElementById('premiumFocusMinutes').value)||50));data.settings.premiumShortBreak=Math.min(60,Math.max(1,Number(document.getElementById('premiumShortBreak').value)||10));data.settings.premiumLongBreak=Math.min(90,Math.max(5,Number(document.getElementById('premiumLongBreak').value)||25));persist();toast('Gelişmiş sayaç tercihleri kaydedildi.')}
+function printPremiumReport(){if(!requirePremium('Karne'))return;const w=window.open('','_blank');if(!w)return toast('Rapor penceresi engellendi.');const total=(data.sessions||[]).reduce((a,s)=>a+(Number(s.minutes)||0),0),done=(data.tasks||[]).filter(t=>t.done).length,all=(data.tasks||[]).length,graded=(data.exams||[]).filter(e=>e.score!==''&&e.score!=null),avg=graded.length?(graded.reduce((a,e)=>a+Number(e.score),0)/graded.length).toFixed(2):'—';w.document.write(`<html lang="tr"><meta charset="utf-8"><title>Ders Takip · Karne</title><body style="font:16px Arial;padding:32px"><h1>Ders Takip · Gelişim Karnesi</h1><p>${new Date().toLocaleDateString('tr-TR')}</p><h2>Çalışma: ${total} dakika</h2><h2>Görev tamamlama: ${all?Math.round(done/all*100):0}%</h2><h2>Sınav ortalaması: ${avg}</h2><h2>Çalışma serisi: ${streakCount()} gün</h2><script>window.print()<\/script></body></html>`);w.document.close()}
+
+// V16: final pre-test diagnostics. Never include personal study content in the report.
+let lastDiagnostics={};
+function runDiagnostics(){
+ const online=navigator.onLine;
+ const hasStorage=(()=>{try{const k='__dt_diag__';localStorage.setItem(k,'1');localStorage.removeItem(k);return true}catch(e){return false}})();
+ const swSupported='serviceWorker' in navigator;
+ const secure=window.isSecureContext;
+ const firebaseReady=!!(window.firebase && typeof fbAuth!=='undefined' && fbAuth && typeof fbDb!=='undefined' && fbDb);
+ const checks=[
+  {key:'storage',label:'Tarayıcı depolaması',ok:hasStorage,detail:hasStorage?'localStorage yazma/okuma erişilebilir':'localStorage kullanılamıyor'},
+  {key:'network',label:'İnternet bağlantısı',ok:online,detail:online?'Tarayıcı çevrimiçi görünüyor':'Tarayıcı çevrimdışı görünüyor'},
+  {key:'pwa',label:'PWA / Service Worker',ok:swSupported&&secure,detail:!swSupported?'Service Worker desteklenmiyor':(!secure?'HTTPS veya localhost gerekli':'Service Worker kullanılabilir')},
+  {key:'firebase',label:'Firebase SDK',ok:firebaseReady,detail:firebaseReady?'Firebase SDK başlatılmış':'Firebase SDK başlatılmamış veya erişilemiyor'}
+ ];
+ checks.forEach(c=>{
+  const detail=document.getElementById('diag'+c.key.charAt(0).toUpperCase()+c.key.slice(1));
+  const badge=document.getElementById('diag'+c.key.charAt(0).toUpperCase()+c.key.slice(1)+'Badge');
+  if(detail)detail.textContent=c.detail;
+  if(badge){badge.textContent=c.ok?'Uygun':'Kontrol gerekli';badge.style.color=c.ok?'var(--good)':'var(--warn)';}
+ });
+ lastDiagnostics={app:'Ders Takip',version:16,checkedAt:new Date().toISOString(),checks};
+ const updated=document.getElementById('diagUpdated');
+ if(updated)updated.textContent='Son kontrol: '+new Date().toLocaleString('tr-TR')+' · Kişisel kayıtlar rapora dahil edilmez.';
+ return lastDiagnostics;
+}
+function downloadDiagnostics(){
+ const report=runDiagnostics();
+ download('ders-takip-tanilama-v16.json',JSON.stringify(report,null,2),'application/json');
+ toast('Teknik tanılama raporu indirildi.');
+}
+
+// V15: copy the least-privilege Firestore rules shown in Settings.
+async function copyFirestoreRules(){
+ const el=document.getElementById('firestoreRulesText');
+ if(!el)return;
+ const value=el.textContent;
+ try{
+  if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(value);}
+  else{
+   const area=document.createElement('textarea');area.value=value;area.style.position='fixed';area.style.opacity='0';
+   document.body.appendChild(area);area.select();
+   const ok=document.execCommand('copy');area.remove();
+   if(!ok)throw new Error('copy failed');
+  }
+  toast('Firestore kuralları kopyalandı.');
+ }catch(e){toast('Otomatik kopyalama başarısız. Kuralları metin alanından elle kopyalayabilirsin.');}
+}
+
+// V14: local appearance preferences.
+function applyAppearance(){
+ const a=data.settings.appearance||{};
+ document.body.dataset.theme=['midnight','light','aero','liquid'].includes(a.theme)?a.theme:'midnight';
+ document.body.dataset.accent=['blue','violet','mint','rose','amber'].includes(a.accent)?a.accent:'blue';
+ document.body.dataset.density=a.density==='compact'?'compact':'comfortable';
+ document.body.dataset.font=a.font==='large'?'large':'normal';
+}
+function renderAppearance(){
+ const a=data.settings.appearance||{};
+ const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v};
+ set('appearanceTheme',a.theme||'midnight');set('appearanceAccent',a.accent||'blue');
+ set('appearanceDensity',a.density||'comfortable');set('appearanceFont',a.font||'normal');
+ applyAppearance();
+}
+function saveAppearance(){
+ if(['liquid','aero'].includes(document.getElementById('appearanceTheme')?.value)&&!requirePremium('Aero / Liquid Glass temaları')){renderAppearance();return;}
+ data.settings.appearance={
+  theme:document.getElementById('appearanceTheme')?.value||'midnight',
+  accent:document.getElementById('appearanceAccent')?.value||'blue',
+  density:document.getElementById('appearanceDensity')?.value||'comfortable',
+  font:document.getElementById('appearanceFont')?.value||'normal'
+ };
+ applyAppearance();
+ try{localStorage.setItem('dersTakipData',JSON.stringify(data));if(typeof noteLocalChange==='function')noteLocalChange()}catch(e){}
+ const status=document.getElementById('appearanceStatus');if(status)status.textContent='Görünüm uygulandı ve bu cihazda kaydedildi.';
+ toast('Görünüm güncellendi.');
+}
+function resetAppearance(){
+ data.settings.appearance={theme:'midnight',accent:'blue',density:'comfortable',font:'normal'};
+ renderAppearance();
+ try{localStorage.setItem('dersTakipData',JSON.stringify(data));if(typeof noteLocalChange==='function')noteLocalChange()}catch(e){}
+ const status=document.getElementById('appearanceStatus');if(status)status.textContent='Varsayılan görünüm geri yüklendi.';
+ toast('Görünüm varsayılana döndürüldü.');
+}
+
+// V13: family privacy preferences only. No account linking is performed client-side.
+function renderFamilySettings(){
+ const f=data.settings.family||{role:'student',guardianLabel:'',share:{}};
+ const role=f.role==='guardian'?'guardian':'student';
+ const roleEl=document.getElementById('familyRole'); if(roleEl)roleEl.value=role;
+ const student=document.getElementById('studentFamilySettings'),guardian=document.getElementById('guardianFamilySettings');
+ if(student)student.style.display=role==='student'?'block':'none';
+ if(guardian)guardian.style.display=role==='guardian'?'block':'none';
+ const label=document.getElementById('guardianLabel');if(label)label.value=f.guardianLabel||'';
+ ['tasks','exams','study','topics','schedule','notes'].forEach(k=>{
+  const el=document.getElementById('share'+k.charAt(0).toUpperCase()+k.slice(1));
+  if(el)el.checked=!!f.share?.[k];
+ });
+}
+function saveFamilySettings(){
+ const role=document.getElementById('familyRole')?.value||'student';
+ const share={};
+ ['tasks','exams','study','topics','schedule','notes'].forEach(k=>{
+  const el=document.getElementById('share'+k.charAt(0).toUpperCase()+k.slice(1));
+  share[k]=!!el?.checked;
+ });
+ data.settings.family={
+  role,
+  guardianLabel:document.getElementById('guardianLabel')?.value?.trim().slice(0,60)||'',
+  share
+ };
+ persist();
+ const status=document.getElementById('familySaveStatus');
+ if(status)status.textContent='Tercihler bu cihazda kaydedildi. Hesaplar arasında paylaşım yapılmadı.';
+ renderFamilySettings();
+}
+function resetFamilySettings(){
+ if(!confirm('Aile paylaşım tercihleri sıfırlansın mı?'))return;
+ data.settings.family={role:'student',guardianLabel:'',share:{tasks:false,exams:false,study:false,topics:false,schedule:false,notes:false}};
+ persist();renderFamilySettings();
+ toast('Aile tercihleri sıfırlandı.');
+}
+
+// Firebase V13: Auth + Firestore only. No Storage, Functions or Hosting.
+const firebaseConfig = {
+  apiKey: "AIzaSyA8RG3Nurzm-y-sZe6cXI7-ELSz8ymsFUk",
+  authDomain: "derstakip-d88b6.firebaseapp.com",
+  projectId: "derstakip-d88b6",
+  messagingSenderId: "682164404809",
+  appId: "1:682164404809:web:d40117eac6e67d221f7598"
+};
+let fbApp=null, fbAuth=null, fbDb=null, currentFirebaseUser=null, cloudSyncBusy=false;
+try {
+  fbApp = firebase.initializeApp(firebaseConfig);
+  fbAuth = firebase.auth();
+  fbDb = firebase.firestore();
+  document.getElementById('firebaseStatus').textContent='Firebase hazır';
+} catch (e) {
+  console.error('Firebase başlatılamadı:', e);
+  document.getElementById('firebaseStatus').textContent='Bağlantı kurulamadı';
+}
+function setSyncMessage(msg){ const el=document.getElementById('syncMessage'); if(el) el.textContent=msg; }
+function setFirebaseStatus(msg){ const el=document.getElementById('firebaseStatus'); if(el) el.textContent=msg; }
+function getCloudRef(){
+  if(!currentFirebaseUser || !fbDb) return null;
+  return fbDb.collection('users').doc(currentFirebaseUser.uid).collection('appData').doc('main');
+}
+
+function checkFirebaseAuthEnvironment(){
+ const protocol=window.location.protocol;
+ if(!['http:','https:','chrome-extension:'].includes(protocol)){
+  toast('Firebase girişi desteklenmiyor: Uygulamayı file:// yerine HTTPS (GitHub Pages) veya localhost üzerinden aç.');
+  return false;
+ }
+ try{
+  const key='__ders_takip_auth_check__';
+  localStorage.setItem(key,'1');localStorage.removeItem(key);
+ }catch(e){
+  toast('Tarayıcı depolaması kapalı. Site verileri / localStorage iznini açıp tekrar dene.');
+  return false;
+ }
+ return true;
+}
+
+async function registerWithEmail(){
+  if(!checkFirebaseAuthEnvironment())return;
+  const email=document.getElementById('authEmail').value.trim(), password=document.getElementById('authPassword').value;
+  if(!email || password.length<6) return toast('Geçerli e-posta ve en az 6 karakterli şifre gir.');
+  try { await fbAuth.createUserWithEmailAndPassword(email,password); toast('Hesap oluşturuldu.'); }
+  catch(e){ toast(firebaseError(e)); }
+}
+async function loginWithEmail(){
+  if(!checkFirebaseAuthEnvironment())return;
+  const email=document.getElementById('authEmail').value.trim(), password=document.getElementById('authPassword').value;
+  if(!email || !password) return toast('E-posta ve şifre gir.');
+  try { await fbAuth.signInWithEmailAndPassword(email,password); toast('Giriş başarılı.'); }
+  catch(e){ toast(firebaseError(e)); }
+}
+async function loginWithGoogle(){
+  if(!checkFirebaseAuthEnvironment())return;
+  try { const p=new firebase.auth.GoogleAuthProvider(); await fbAuth.signInWithPopup(p); }
+  catch(e){ toast(firebaseError(e)); }
+}
+
+async function loginWithApple(){
+ if(!checkFirebaseAuthEnvironment())return;
+ if(!fbAuth || !firebase.auth.OAuthProvider)return toast('Apple ile giriş için Firebase Auth SDK hazır değil.');
+ try{
+  const provider=new firebase.auth.OAuthProvider('apple.com');
+  provider.addScope('email');
+  provider.addScope('name');
+  const isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile) await fbAuth.signInWithRedirect(provider);
+  else await fbAuth.signInWithPopup(provider);
+ }catch(e){toast(firebaseError(e));}
+}
+
+async function resetPassword(){
+  if(!checkFirebaseAuthEnvironment())return;
+  const email=document.getElementById('authEmail').value.trim();
+  if(!email) return toast('Önce e-posta adresini gir.');
+  try { await fbAuth.sendPasswordResetEmail(email); toast('Şifre sıfırlama e-postası gönderildi.'); }
+  catch(e){ toast(firebaseError(e)); }
+}
+async function logoutFirebase(){
+  if(!fbAuth) return;
+  try { await fbAuth.signOut(); toast('Hesaptan çıkış yapıldı.'); }
+  catch(e){ toast(firebaseError(e)); }
+}
+function firebaseError(e){
+  const map={
+    'auth/email-already-in-use':'Bu e-posta ile zaten hesap var.',
+    'auth/invalid-email':'E-posta adresi geçersiz.',
+    'auth/weak-password':'Şifre çok zayıf.',
+    'auth/user-not-found':'Bu hesap bulunamadı.',
+    'auth/wrong-password':'Şifre hatalı.',
+    'auth/invalid-credential':'E-posta veya şifre hatalı.',
+    'auth/popup-blocked':'Giriş penceresi engellendi.',
+    'auth/unauthorized-domain':'Bu alan adı Firebase Console’da yetkili değil.',
+    'auth/operation-not-allowed':'Bu giriş yöntemi Firebase Console’da etkin değil.',
+    'auth/operation-not-supported-in-this-environment':'Giriş için HTTPS veya localhost kullan; file:// adresi desteklenmez.',
+    'auth/unsupported-persistence-type':'Tarayıcı depolaması desteklenmiyor veya kapalı.',
+    'auth/web-storage-unsupported':'Tarayıcı web depolaması kullanılamıyor; site verisi iznini kontrol et.',
+    'auth/invalid-oauth-provider':'Apple sağlayıcısı Firebase Authentication içinde doğru yapılandırılmamış.',
+    'auth/unauthorized-domain':'Bu alan adı Firebase Console > Authentication > Settings > Authorized domains bölümüne eklenmeli.'
+  };
+  return map[e.code] || (e.message || 'Firebase işlemi başarısız oldu.');
+}
+function cloudPayload(){
+  // Local file blobs/data URLs are intentionally excluded from cloud sync.
+  const copy=JSON.parse(JSON.stringify(data));
+  copy.files=[];
+  return copy;
+}
+async function syncNow(){
+  const ref=getCloudRef();
+  if(!ref) return toast('Önce Firebase hesabına giriş yap.');
+  if(!navigator.onLine){localStorage.setItem('dersTakipPendingSync','true');updateOfflineUI();return toast('İnternet yok. Değişiklikler cihazda saklandı; bağlantı gelince yeniden deneyebilirsin.');}
+  if(cloudSyncBusy) return;
+  try {
+    await writeCloudSnapshot(cloudPayload(),ref);
+    toast('Senkronizasyon tamamlandı.');
+  } catch(e){ setFirebaseStatus('Senkronizasyon hatası'); toast(firebaseError(e)); }
+}
+async function downloadCloudBackup(){
+  const ref=getCloudRef(); if(!ref) return toast('Önce giriş yap.');
+  try {
+    const snap=await ref.get();
+    if(!snap.exists || !snap.data().data) return toast('Bulutta yedek bulunamadı.');
+    download('ders-takip-bulut-yedegi.json',JSON.stringify(snap.data().data,null,2),'application/json');
+  } catch(e){ toast(firebaseError(e)); }
+}
+async function handleFirebaseUser(user){
+  currentFirebaseUser=user||null;
+  updateSyncLabels();
+  document.getElementById('authSignedOut').style.display=user?'none':'block';
+  document.getElementById('authSignedIn').style.display=user?'block':'none';
+  document.getElementById('authUserEmail').textContent=user?.email || 'Hesap';
+  if(!user){setFirebaseStatus('Oturum kapalı');setSyncMessage('Giriş yapmadan önce kayıtların bu cihazda tutulur.');return;}
+  setFirebaseStatus('Hesap bağlı');
+  const ref=getCloudRef();
+  try {
+    const snap=await ref.get();
+    if(snap.exists && snap.data().data){
+      pendingCloudData=snap.data().data;
+      lastCloudFingerprint=fingerprint(pendingCloudData);
+      lastLocalFingerprint=fingerprint(cloudPayload());
+      const choice=confirm('Bu hesapta daha önce kaydedilmiş bulut verisi var.\\n\\nTamam: Buluttaki verileri bu cihazda kullan.\\nİptal: Bu cihazdaki verileri buluta yükle.');
+      if(choice){
+        const cloud=snap.data().data;
+        data={...defaults,...cloud,files:data.files||[]};
+        lastLocalFingerprint=fingerprint(cloudPayload());
+        try{localStorage.setItem('dersTakipData',JSON.stringify(data));}catch(e){}
+        renderAll(); setSyncMessage('Bulut verisi bu cihaza yüklendi. Yerel dosyaların korunmaya çalışıldı.');
+      } else { await syncNow(); }
+    } else {
+      await syncNow();
+      setSyncMessage('İlk bulut yedeği oluşturuldu. Dosyalar cihazında kalır.');
+    }
+  } catch(e){ setFirebaseStatus('Veri erişim hatası'); setSyncMessage(firebaseError(e)); }
+}
+if(fbAuth){
+  fbAuth.onAuthStateChanged(handleFirebaseUser);
+}
+// Local changes are persisted on this device. Cloud sync is explicit via the button,
+// avoiding accidental overwrites while multiple devices are editing.
+
+
+// V9: safer opt-in background sync with a local/cloud change guard.
+let autoSyncEnabled = localStorage.getItem('dersTakipAutoSync') === 'true';
+let localEditCounter = 0;
+let lastCloudFingerprint = '';
+let lastLocalFingerprint = '';
+let pendingCloudData = null;
+let syncTimer = null;
+let suppressAutoSync = false;
+function fingerprint(obj){
+  try { return JSON.stringify(obj); } catch(e) { return ''; }
+}
+function updateSyncLabels(){
+  const t=document.getElementById('autoSyncToggle');
+  if(t) t.checked=autoSyncEnabled;
+  const l=document.getElementById('lastSyncLabel');
+  const v=localStorage.getItem('dersTakipLastSync');
+  if(l) l.textContent='Son senkronizasyon: '+(v?new Date(v).toLocaleString('tr-TR'):'Henüz yok');
+}
+function toggleAutoSync(enabled){
+  autoSyncEnabled=!!enabled;
+  localStorage.setItem('dersTakipAutoSync',String(autoSyncEnabled));
+  updateSyncLabels();
+  setSyncMessage(autoSyncEnabled
+    ? 'Otomatik senkronizasyon açık. Değişiklikler kısa bir beklemeden sonra kontrol edilip buluta gönderilecek.'
+    : 'Otomatik senkronizasyon kapalı. Bulut kaydı için Şimdi senkronize et düğmesini kullanabilirsin.');
+}
+function noteLocalChange(){
+  if(suppressAutoSync) return;
+  localEditCounter++;
+  if(currentFirebaseUser){
+    localStorage.setItem('dersTakipPendingSync','true');
+    updateOfflineUI();
+  }
+  if(!autoSyncEnabled || !currentFirebaseUser) return;
+  clearTimeout(syncTimer);
+  syncTimer=setTimeout(()=>autoSyncSafely(),1800);
+}
+async function autoSyncSafely(){
+  if(!currentFirebaseUser || cloudSyncBusy || !autoSyncEnabled) return;
+  if(!navigator.onLine){localStorage.setItem('dersTakipPendingSync','true');updateOfflineUI();return;}
+  const ref=getCloudRef(); if(!ref) return;
+  try {
+    const snap=await ref.get();
+    const cloud=snap.exists && snap.data().data ? snap.data().data : null;
+    const local=cloudPayload();
+    const cloudFp=fingerprint(cloud);
+    const localFp=fingerprint(local);
+    // If both sides changed since the last acknowledged sync, do not overwrite.
+    if(lastCloudFingerprint && cloudFp!==lastCloudFingerprint &&
+       lastLocalFingerprint && localFp!==lastLocalFingerprint){
+      pendingCloudData=cloud;
+      const box=document.getElementById('syncConflictBox');
+      if(box) box.style.display='block';
+      setFirebaseStatus('Çakışma var');
+      setSyncMessage('Başka bir cihazda da değişiklik yapılmış. Veriler otomatik olarak birleştirilmedi; aşağıdan hangi kopyanın kullanılacağını seç.');
+      return;
+    }
+    await writeCloudSnapshot(local, ref);
+  } catch(e){
+    setFirebaseStatus('Senkronizasyon hatası');
+    setSyncMessage('Otomatik senkronizasyon başarısız: '+firebaseError(e));
+  }
+}
+async function writeCloudSnapshot(payload, ref=getCloudRef()){
+  if(!ref || !currentFirebaseUser) return;
+  cloudSyncBusy=true; setFirebaseStatus('Senkronize ediliyor');
+  try {
+    await ref.set({
+      data:payload,
+      updatedAt:firebase.firestore.FieldValue.serverTimestamp(),
+      schemaVersion:16.1
+    });
+    lastCloudFingerprint=fingerprint(payload);
+    lastLocalFingerprint=fingerprint(cloudPayload());
+    localStorage.setItem('dersTakipLastSync',new Date().toISOString());
+    localStorage.removeItem('dersTakipPendingSync');
+    updateSyncLabels();
+    updateOfflineUI();
+    setFirebaseStatus('Senkronize edildi');
+    setSyncMessage('Bu cihazın verileri Firestore ile eşitlendi. Yerel dosyalar buluta gönderilmedi.');
+  } finally { cloudSyncBusy=false; }
+}
+async function resolveSyncConflict(choice){
+  const ref=getCloudRef(); if(!ref) return;
+  try{
+    if(choice==='local'){
+      await writeCloudSnapshot(cloudPayload(),ref);
+    } else if(choice==='cloud' && pendingCloudData){
+      suppressAutoSync=true;
+      data={...defaults,...pendingCloudData,files:data.files||[]};
+      try{localStorage.setItem('dersTakipData',JSON.stringify(data));}catch(e){}
+      renderAll();
+      suppressAutoSync=false;
+      lastCloudFingerprint=fingerprint(pendingCloudData);
+      lastLocalFingerprint=fingerprint(cloudPayload());
+      setFirebaseStatus('Bulut verisi yüklendi');
+      setSyncMessage('Buluttaki kopya bu cihazda kullanılmaya başlandı. Yerel dosyaların korunması hedeflendi.');
+    }
+    pendingCloudData=null;
+    const box=document.getElementById('syncConflictBox'); if(box) box.style.display='none';
+  }catch(e){suppressAutoSync=false;toast(firebaseError(e));}
+}
+
+
+// V10 calendar, schedule templates, and event conflict checks.
+function dayNameFromDate(dateStr){
+  if(!dateStr) return '';
+  const names=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+  return names[new Date(dateStr+'T12:00:00').getDay()];
+}
+function timeToMinutes(v){
+  if(!v || !/^\d{2}:\d{2}$/.test(v)) return null;
+  const [h,m]=v.split(':').map(Number); return h*60+m;
+}
+function eventConflicts(date,time,duration,ignoreId){
+  const start=timeToMinutes(time);
+  if(start===null) return [];
+  const end=start+Math.max(1,Number(duration)||30);
+  const found=[];
+  const check=(item,type)=>{
+    if(item.id===ignoreId || item.date!==date || !item.time) return;
+    const other=timeToMinutes(item.time); if(other===null) return;
+    const otherEnd=other+Math.max(1,Number(item.duration)||30);
+    if(start<otherEnd && other<end) found.push(type+': '+item.title+' ('+item.time+')');
+  };
+  data.tasks.forEach(x=>check(x,'Görev'));
+  data.exams.forEach(x=>check(x,'Sınav'));
+  const weekday=dayNameFromDate(date);
+  data.schedule.filter(x=>x.day===weekday).forEach(x=>{
+    const a=timeToMinutes(x.start),b=timeToMinutes(x.end);
+    if(a!==null&&b!==null&&start<b&&a<end) found.push('Ders: '+x.course+' ('+x.start+'–'+x.end+')');
+  });
+  return found;
+}
+function warnEventConflict(date,time,duration){
+  const c=eventConflicts(date,time,duration);
+  if(c.length) return confirm('Bu saatlerde çakışma var:\\n• '+c.join('\\n• ')+'\\n\\nYine de kaydetmek istiyor musun?');
+  return true;
+}
+function saveScheduleTemplate(){if(!requirePremium('Program şablonları'))return;
+  const name=prompt('Bu program şablonuna bir ad ver:');
+  if(!name || !name.trim()) return;
+  if(!data.settings.scheduleTemplates) data.settings.scheduleTemplates=[];
+  data.settings.scheduleTemplates.push({id:crypto.randomUUID(),name:name.trim(),items:JSON.parse(JSON.stringify(data.schedule))});
+  persist(); renderSchedule(); toast('Haftalık program şablonu kaydedildi.');
+}
+function loadScheduleTemplate(){if(!requirePremium('Program şablonları'))return;
+  const id=document.getElementById('scheduleTemplateSelect')?.value;
+  const t=(data.settings.scheduleTemplates||[]).find(x=>x.id===id);
+  if(!t) return toast('Önce bir şablon seç.');
+  if(!confirm('Mevcut haftalık programın yerine bu şablon yüklensin mi?')) return;
+  data.schedule=JSON.parse(JSON.stringify(t.items||[]));
+  persist(); toast('Haftalık program şablonu yüklendi.');
+}
+function renderSchedule(){
+  const el=document.getElementById('scheduleGrid'); if(!el)return;
+  const days=['Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi','Pazar'];
+  const arr=(data.schedule||[]).slice().sort((a,b)=>days.indexOf(a.day)-days.indexOf(b.day)||(a.start||'').localeCompare(b.start||''));
+  const sel=document.getElementById('scheduleTemplateSelect');
+  if(sel){
+    const old=sel.value, templates=data.settings.scheduleTemplates||[];
+    sel.innerHTML='<option value="">Şablon seç</option>'+templates.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join('');
+    if(templates.some(t=>t.id===old)) sel.value=old;
+  }
+  el.innerHTML=`<table style="width:100%;border-collapse:collapse;min-width:600px"><thead><tr>${days.map(d=>`<th style="padding:10px;border-bottom:1px solid var(--line);text-align:left;color:var(--muted)">${d}</th>`).join('')}</tr></thead><tbody><tr>${days.map(day=>`<td style="vertical-align:top;padding:7px;border-right:1px solid var(--line);width:14.28%">${arr.filter(x=>x.day===day).map(x=>`<div style="padding:9px;margin-bottom:7px;border-radius:10px;background:#203653;border-left:3px solid var(--accent)"><b style="font-size:12px">${esc(x.course)}</b><div class="small">${x.start}–${x.end}</div><div class="small muted">${esc(x.room||'')}</div><button class="ghost small" onclick="deleteItem('schedule','${x.id}')">Sil</button></div>`).join('')||'<span class="muted small">Boş</span>'}</td>`).join('')}</tr></tbody></table>`;
+}
+function renderCalendar(){
+  const y=monthCursor.getFullYear(),m=monthCursor.getMonth(),first=new Date(y,m,1),days=new Date(y,m+1,0).getDate(),offset=(first.getDay()+6)%7;
+  const title=document.getElementById('monthTitle'); if(title) title.textContent=first.toLocaleDateString('tr-TR',{month:'long',year:'numeric'});
+  const names=['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'];
+  let out=names.map(n=>`<div class="muted small" style="text-align:center;padding:8px 0">${n}</div>`).join('');
+  for(let i=0;i<offset;i++) out+='<div></div>';
+  for(let d=1;d<=days;d++){
+    const key=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const tasks=data.tasks.filter(t=>t.date===key), exams=data.exams.filter(e=>e.date===key);
+    const weekday=dayNameFromDate(key);
+    const lessons=data.schedule.filter(s=>s.day===weekday);
+    const study=data.sessions.filter(s=>s.date===key).reduce((a,b)=>a+(Number(b.minutes)||0),0);
+    const chips=[
+      ...tasks.map(t=>({id:t.id,type:'task',label:'Görev: '+t.title,time:t.time,color:'#78aaff'})),
+      ...exams.map(e=>({id:e.id,type:'exam',label:'Sınav: '+e.title,time:e.time,color:'#f3b85b'})),
+      ...lessons.slice(0,2).map(s=>({id:'',type:'lesson',label:'Ders: '+s.course,time:s.start,color:'#9b8cff'}))
+    ];
+    out+=`<div data-calendar-date="${key}" ondragover="event.preventDefault()" ondrop="dropCalendarEvent(event,'${key}')" style="min-height:112px;padding:6px;border:1px solid var(--line);border-radius:10px;background:${key===today()?'#203858':'#101a2a'}">
+      <b>${d}</b>${study?`<div class="small" style="color:#64c99b">${study} dk çalışma</div>`:''}
+      ${chips.map(c=>`<div ${c.type!=='lesson'?`draggable="true" ondragstart="dragCalendarEvent(event,'${c.type}','${c.id}')"`:''} title="${esc(c.label)}" style="font-size:10px;line-height:1.35;margin-top:4px;padding:3px 4px;border-radius:5px;background:${c.color}22;border-left:3px solid ${c.color};color:var(--text);${c.type!=='lesson'?'cursor:grab;':''}">${esc(c.time?c.time+' ':'')}${esc(c.label)}</div>`).join('')}
+      ${chips.length>3?`<div class="small muted">+${chips.length-3} etkinlik</div>`:''}
+    </div>`;
+  }
+  document.getElementById('calendarGrid').innerHTML=out;
+}
+function dragCalendarEvent(ev,type,id){
+  ev.dataTransfer.setData('text/plain',JSON.stringify({type,id}));
+  ev.dataTransfer.effectAllowed='move';
+}
+function dropCalendarEvent(ev,date){
+  ev.preventDefault();
+  let payload; try{payload=JSON.parse(ev.dataTransfer.getData('text/plain'))}catch(e){return}
+  if(!payload || !['task','exam'].includes(payload.type)) return;
+  const arr=payload.type==='task'?data.tasks:data.exams;
+  const item=arr.find(x=>x.id===payload.id); if(!item)return;
+  const conflicts=eventConflicts(date,item.time,item.duration,item.id);
+  if(conflicts.length && !confirm('Yeni tarihte zaman çakışması var:\\n• '+conflicts.join('\\n• ')+'\\n\\nYine de taşı?')) return;
+  item.date=date; persist(); renderCalendar(); toast('Etkinlik yeni tarihe taşındı.');
+}
+
+
+// V12: PWA installation, offline app shell and queued Firestore sync.
+let deferredInstallPrompt=null;
+function updateOfflineUI(){
+ const banner=document.getElementById('connectionBanner');
+ const pending=localStorage.getItem('dersTakipPendingSync')==='true';
+ if(!banner)return;
+ if(!navigator.onLine){
+  banner.style.display='block';
+  banner.textContent='Çevrimdışısın. Uygulama bu cihazda çalışmaya devam eder; değişiklikler yerel olarak saklanır.'+(pending?' Buluta gönderilmeyi bekleyen değişiklikler var.':'');
+ } else if(pending && currentFirebaseUser){
+  banner.style.display='block';
+  banner.textContent='İnternet bağlantısı var. Buluta gönderilmeyi bekleyen değişikliklerin bulunuyor.';
+ } else {
+  banner.style.display='none';
+ }
+}
+function installPWA(){
+ if(deferredInstallPrompt){
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then(()=>{deferredInstallPrompt=null;const b=document.getElementById('installAppBtn');if(b)b.style.display='none';});
+ } else {
+  toast('iPhone/iPad: Safari paylaş menüsünden Ana Ekrana Ekle. Android/masaüstü: tarayıcı menüsündeki Uygulamayı yükle seçeneğini kullan.');
+ }
+}
+window.addEventListener('beforeinstallprompt',ev=>{
+ ev.preventDefault();deferredInstallPrompt=ev;
+ const b=document.getElementById('installAppBtn');if(b)b.style.display='inline-block';
+});
+window.addEventListener('appinstalled',()=>{
+ deferredInstallPrompt=null;
+ const b=document.getElementById('installAppBtn');if(b)b.style.display='none';
+ toast('Ders Takip cihazına eklendi.');
+});
+window.addEventListener('online',()=>{
+ updateOfflineUI();
+ if(currentFirebaseUser && localStorage.getItem('dersTakipPendingSync')==='true'){
+  if(autoSyncEnabled) autoSyncSafely();
+  else toast('Bağlantı geri geldi. Bekleyen verileri Ayarlar bölümünden senkronize edebilirsin.');
+ }
+});
+window.addEventListener('offline',updateOfflineUI);
+if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+ window.addEventListener('load',()=>{
+  navigator.serviceWorker.register('./sw.js').then(reg=>{
+   console.info('Ders Takip çevrimdışı desteği hazır.',reg.scope);
+  }).catch(err=>console.warn('Service Worker kaydedilemedi:',err));
+ });
+}
+updateOfflineUI();
+
+buildNav();renderAll();go('home');
+</script>
+</body>
+</html>
