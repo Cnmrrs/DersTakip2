@@ -1,4 +1,4 @@
-DERS TAKİP V16.1.1 BETA 1
+DERS TAKİP V16.1.1 BETA 2
 
 Önceki konuşmalarda belirtilen Premium prototipleri:
 - Ücretsiz haftalık 3, Premium sınırsız hatırlatıcı
@@ -25,3 +25,11 @@ SINIRLAMALAR:
 - Beta; gerçek tarayıcı/Firebase uçtan uca testleri yapılmamıştır.
 
 Kurulum: ZIP içindeki dosyaları aynı GitHub Pages klasörüne yükle. HTTPS veya localhost kullan. Önce JSON yedeği al.
+
+
+V16.1.1 Beta 2 yenilikleri:
+- İlk açılışta giriş / hesap oluşturma ekranı.
+- Oturumsuz devam seçeneği: veriler bu cihazda kalır, bulut senkronizasyonu için giriş gerekir.
+- Oturumum açık kalsın seçeneği: açıkken LOCAL, kapalıyken SESSION Firebase Auth kalıcılığı kullanılır.
+- Firebase Authentication file:// ortamında çalışmaz; giriş için HTTPS veya localhost gerekir. Oturumsuz kullanım file:// ortamında da tarayıcı depolaması izin veriyorsa kullanılabilir.
+- Bu paket statik kod kontrollerinden geçirilmiştir; gerçek Firebase hesabı ve tarayıcı testleri kullanıcı ortamında ayrıca yapılmalıdır.

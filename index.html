@@ -48,9 +48,32 @@ body.premium-motion .card{animation:premiumFloatIn .32s ease-out both}
 @keyframes premiumFloatIn{from{opacity:.82;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 body.premium-motion[data-theme="liquid"] .card{transition:transform .22s ease,box-shadow .22s ease}
 body.premium-motion[data-theme="liquid"] .card:hover{transform:translateY(-2px);box-shadow:inset 0 1px #ffffff30,0 18px 44px #0004}
+
+/* V16.1.1 Beta 2 — first-run account gate */
+.auth-gate{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;background:#07101ddd;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.auth-gate.show{display:flex}.auth-gate-card{width:min(100%,520px);max-height:min(92vh,820px);overflow:auto;background:linear-gradient(160deg,#182941,#101b2b);border:1px solid #3a5272;border-radius:22px;padding:clamp(20px,4vw,32px);box-shadow:0 24px 80px #0009}.auth-gate-card h1{font-size:26px;margin:0 0 6px}.auth-gate-card .brandline{display:flex;align-items:center;gap:12px;margin-bottom:22px}.auth-gate-card .logo{flex:0 0 auto}.auth-gate-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.auth-gate-actions button{min-height:44px}.auth-gate-actions .wide{grid-column:1/-1}.auth-gate-check{display:flex;align-items:center;gap:9px;margin:12px 0 16px;color:var(--muted);font-size:13px}.auth-gate-check input{width:17px;height:17px;accent-color:var(--accent)}.auth-gate-divider{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px;margin:15px 0}.auth-gate-divider:before,.auth-gate-divider:after{content:"";height:1px;background:var(--line);flex:1}
+@media(max-width:520px){.auth-gate-actions{grid-template-columns:1fr}.auth-gate-actions .wide{grid-column:auto}}
 </style>
 </head>
 <body>
+<div class="auth-gate" id="authGate" role="dialog" aria-modal="true" aria-labelledby="authGateTitle">
+ <div class="auth-gate-card">
+  <div class="brandline"><div class="logo">D</div><div><div class="eyebrow">DERS TAKİP</div><h1 id="authGateTitle">Hoş geldin</h1><div class="muted small">Hesabınla senkronize ol veya cihazında oturumsuz devam et.</div></div></div>
+  <div class="formrow" style="grid-template-columns:1fr">
+   <div class="field"><label for="gateEmail">E-posta</label><input id="gateEmail" type="email" autocomplete="email" placeholder="ornek@mail.com"></div>
+   <div class="field"><label for="gatePassword">Şifre</label><input id="gatePassword" type="password" autocomplete="current-password" placeholder="En az 6 karakter"></div>
+  </div>
+  <label class="auth-gate-check"><input type="checkbox" id="rememberMeToggle" checked> Oturumum açık kalsın</label>
+  <div class="auth-gate-actions">
+   <button class="primary" onclick="gateRegister()">Hesap oluştur</button><button onclick="gateLogin()">Giriş yap</button>
+   <button class="wide" onclick="gateGoogle()">Google ile giriş</button>
+   <button class="wide" onclick="gateApple()">Apple ile giriş</button>
+  </div>
+  <div class="auth-gate-divider">veya</div>
+  <button class="wide" style="width:100%" onclick="continueWithoutAccount()">Oturumsuz devam et</button>
+  <p class="muted small" id="authGateHint" style="margin:14px 0 0">Oturumsuz kullanımda verilerin bu cihazda saklanır. Cihazlar arası senkronizasyon için giriş yap.</p>
+ </div>
+</div>
 <div class="app">
 <aside class="side">
  <div class="brand"><div class="logo">D</div><span>Ders Takip</span></div>
@@ -289,7 +312,7 @@ body.premium-motion[data-theme="liquid"] .card:hover{transform:translateY(-2px);
      <button onclick="loginWithApple()">Apple ile giriş</button>
      <button onclick="resetPassword()">Şifremi unuttum</button>
     </div>
-    <div class="notice" id="authEnvironmentNotice" style="margin-top:12px">Firebase girişi için uygulamayı HTTPS (ör. GitHub Pages) veya localhost üzerinden aç. index.html dosyasına çift tıklayarak file:// üzerinden açarsan Firebase girişi çalışmaz.</div>
+    <div class="notice" id="authEnvironmentNotice" style="margin-top:12px">Firebase hesabıyla giriş için HTTPS veya localhost gerekir. file:// üzerinden açıldığında Firebase girişi çalışmayabilir; oturumsuz kullanım yine yerel olarak kullanılabilir.</div>
    </div>
    <div id="authSignedIn" style="display:none">
     <div class="item"><div class="grow"><div class="item-title" id="authUserEmail">-</div><div class="item-sub">Firebase hesabı bağlı</div></div><button onclick="logoutFirebase()">Çıkış yap</button></div>
@@ -380,7 +403,7 @@ service cloud.firestore {
   </div>
 
   <div class="card" style="margin-top:16px">
-   <div class="card-head"><h2>V16 · Son kontrol ve tanılama</h2><span class="pill">Test hazırlığı</span></div>
+   <div class="card-head"><h2>V16.1.1 Beta 2 · Son kontrol ve tanılama</h2><span class="pill">Test hazırlığı</span></div>
    <p class="muted small">Bu panel cihaz ve uygulama durumunu özetler. Tanılama raporuna ders, not, görev başlığı, e-posta veya kişisel kayıt içerikleri eklenmez.</p>
    <div class="grid cols" style="margin-top:12px">
     <div class="item"><div class="grow"><div class="item-title">Tarayıcı depolaması</div><div class="item-sub" id="diagStorage">Kontrol ediliyor</div></div><span class="pill" id="diagStorageBadge">…</span></div>
@@ -396,7 +419,7 @@ service cloud.firestore {
   </div>
   <div class="card" style="margin-top:16px">
    <h2>Servis ve güvenlik notları</h2>
-   <p class="muted small">Bu sürüm Firebase Authentication ve Cloud Firestore kullanır. Cloud Storage, Cloud Functions ve Firebase Hosting kullanılmaz. PWA olarak HTTPS üzerinden yayınlandığında uygulama arayüzü çevrimdışı açılabilir; kayıtlar cihazda tutulur ve bağlantı gelince senkronizasyon kuyruğu işlenebilir. Yönetici yetkisi atama ve gerçek veli-öğrenci hesap bağlantısı bu sürümde etkin değildir. V13 aile tercihleri yalnızca yerel ayardır. V15 Firestore kuralları Ayarlar bölümünde kopyalanabilir; Firebase Console'da elle yayımlanmalıdır. V16.1 hata düzeltme paketi: Firebase girişi için HTTPS/localhost kontrolü, Apple giriş düğmesi ve kaydırılabilir yan menü eklendi. Premium özellikler test sonrası belirlenecek. Google ile giriş için Firebase Console'da Google sağlayıcısını etkinleştirip GitHub Pages alan adını yetkili alan adlarına eklemelisin.</p>
+   <p class="muted small">Bu sürüm Firebase Authentication ve Cloud Firestore kullanır. Cloud Storage, Cloud Functions ve Firebase Hosting kullanılmaz. PWA olarak HTTPS üzerinden yayınlandığında uygulama arayüzü çevrimdışı açılabilir; kayıtlar cihazda tutulur ve bağlantı gelince senkronizasyon kuyruğu işlenebilir. Yönetici yetkisi atama ve gerçek veli-öğrenci hesap bağlantısı bu sürümde etkin değildir. V13 aile tercihleri yalnızca yerel ayardır. V15 Firestore kuralları Ayarlar bölümünde kopyalanabilir; Firebase Console'da elle yayımlanmalıdır. V16.1.1 Beta 2: İlk açılış hesap ekranı, oturumsuz devam, oturum açık kalsın tercihi ve Firebase oturum kalıcılığı seçimi eklendi. Firebase Authentication için HTTPS/localhost gerekir; file:// üzerinden giriş desteklenmez. Premium özellikler test sonrası belirlenecek. Google ile giriş için Firebase Console'da Google sağlayıcısını etkinleştirip GitHub Pages alan adını yetkili alan adlarına eklemelisin.</p>
   </div>
  </section>
  <div class="footer-note">Ders Takip · İlk çalışan prototip · Veriler bu tarayıcıda saklanır</div>
@@ -882,23 +905,59 @@ function checkFirebaseAuthEnvironment(){
  return true;
 }
 
+function gateValue(id,fallbackId){
+ const gate=document.getElementById(id);
+ if(gate && gate.value.trim()) return gate.value.trim();
+ const fallback=document.getElementById(fallbackId);
+ return fallback ? fallback.value.trim() : '';
+}
+function rememberSession(){
+ const box=document.getElementById('rememberMeToggle');
+ return box ? box.checked : localStorage.getItem('dersTakipRememberMe')!=='false';
+}
+async function applyAuthPersistence(){
+ if(!fbAuth) throw new Error('Firebase Authentication başlatılamadı.');
+ const remember=rememberSession();
+ localStorage.setItem('dersTakipRememberMe',String(remember));
+ await fbAuth.setPersistence(remember ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION);
+}
+function hideAuthGate(){const gate=document.getElementById('authGate');if(gate)gate.classList.remove('show');}
+function showAuthGate(){const gate=document.getElementById('authGate');if(gate)gate.classList.add('show');}
+function continueWithoutAccount(){
+ try{sessionStorage.setItem('dersTakipGuestSession','true');}catch(e){}
+ hideAuthGate();setFirebaseStatus('Oturumsuz kullanım');
+ setSyncMessage('Oturumsuz devam ediyorsun. Kayıtların bu cihazda saklanır; bulut senkronizasyonu için hesapla giriş yap.');
+ toast('Oturumsuz kullanım başladı.');
+}
+async function gateRegister(){
+ const email=gateValue('gateEmail','authEmail'), password=(document.getElementById('gatePassword')?.value || document.getElementById('authPassword')?.value || '');
+ const e=document.getElementById('authEmail'),pw=document.getElementById('authPassword');if(e)e.value=email;if(pw)pw.value=password;
+ await registerWithEmail();
+}
+async function gateLogin(){
+ const email=gateValue('gateEmail','authEmail'), password=(document.getElementById('gatePassword')?.value || document.getElementById('authPassword')?.value || '');
+ const e=document.getElementById('authEmail'),pw=document.getElementById('authPassword');if(e)e.value=email;if(pw)pw.value=password;
+ await loginWithEmail();
+}
+async function gateGoogle(){await loginWithGoogle();}
+async function gateApple(){await loginWithApple();}
 async function registerWithEmail(){
   if(!checkFirebaseAuthEnvironment())return;
   const email=document.getElementById('authEmail').value.trim(), password=document.getElementById('authPassword').value;
   if(!email || password.length<6) return toast('Geçerli e-posta ve en az 6 karakterli şifre gir.');
-  try { await fbAuth.createUserWithEmailAndPassword(email,password); toast('Hesap oluşturuldu.'); }
+  try { await applyAuthPersistence(); await fbAuth.createUserWithEmailAndPassword(email,password); toast('Hesap oluşturuldu.'); }
   catch(e){ toast(firebaseError(e)); }
 }
 async function loginWithEmail(){
   if(!checkFirebaseAuthEnvironment())return;
   const email=document.getElementById('authEmail').value.trim(), password=document.getElementById('authPassword').value;
   if(!email || !password) return toast('E-posta ve şifre gir.');
-  try { await fbAuth.signInWithEmailAndPassword(email,password); toast('Giriş başarılı.'); }
+  try { await applyAuthPersistence(); await fbAuth.signInWithEmailAndPassword(email,password); toast('Giriş başarılı.'); }
   catch(e){ toast(firebaseError(e)); }
 }
 async function loginWithGoogle(){
   if(!checkFirebaseAuthEnvironment())return;
-  try { const p=new firebase.auth.GoogleAuthProvider(); await fbAuth.signInWithPopup(p); }
+  try { await applyAuthPersistence(); const p=new firebase.auth.GoogleAuthProvider(); await fbAuth.signInWithPopup(p); }
   catch(e){ toast(firebaseError(e)); }
 }
 
@@ -906,12 +965,11 @@ async function loginWithApple(){
  if(!checkFirebaseAuthEnvironment())return;
  if(!fbAuth || !firebase.auth.OAuthProvider)return toast('Apple ile giriş için Firebase Auth SDK hazır değil.');
  try{
+  await applyAuthPersistence();
   const provider=new firebase.auth.OAuthProvider('apple.com');
-  provider.addScope('email');
-  provider.addScope('name');
+  provider.addScope('email');provider.addScope('name');
   const isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if(isMobile) await fbAuth.signInWithRedirect(provider);
-  else await fbAuth.signInWithPopup(provider);
+  if(isMobile) await fbAuth.signInWithRedirect(provider); else await fbAuth.signInWithPopup(provider);
  }catch(e){toast(firebaseError(e));}
 }
 
@@ -924,7 +982,7 @@ async function resetPassword(){
 }
 async function logoutFirebase(){
   if(!fbAuth) return;
-  try { await fbAuth.signOut(); toast('Hesaptan çıkış yapıldı.'); }
+  try { try{sessionStorage.removeItem('dersTakipGuestSession')}catch(e){} await fbAuth.signOut(); toast('Hesaptan çıkış yapıldı.'); }
   catch(e){ toast(firebaseError(e)); }
 }
 function firebaseError(e){
@@ -973,10 +1031,18 @@ async function downloadCloudBackup(){
 async function handleFirebaseUser(user){
   currentFirebaseUser=user||null;
   updateSyncLabels();
+  const guest=(()=>{try{return sessionStorage.getItem('dersTakipGuestSession')==='true'}catch(e){return false}})();
   document.getElementById('authSignedOut').style.display=user?'none':'block';
   document.getElementById('authSignedIn').style.display=user?'block':'none';
   document.getElementById('authUserEmail').textContent=user?.email || 'Hesap';
-  if(!user){setFirebaseStatus('Oturum kapalı');setSyncMessage('Giriş yapmadan önce kayıtların bu cihazda tutulur.');return;}
+  if(!user){
+    setFirebaseStatus(guest?'Oturumsuz kullanım':'Oturum kapalı');
+    setSyncMessage(guest?'Oturumsuz devam ediyorsun. Kayıtların bu cihazda saklanır.':'Giriş yapmadan önce kayıtların bu cihazda tutulur.');
+    if(!guest)showAuthGate();
+    return;
+  }
+  hideAuthGate();
+  try{sessionStorage.removeItem('dersTakipGuestSession')}catch(e){}
   setFirebaseStatus('Hesap bağlı');
   const ref=getCloudRef();
   try {
@@ -985,22 +1051,31 @@ async function handleFirebaseUser(user){
       pendingCloudData=snap.data().data;
       lastCloudFingerprint=fingerprint(pendingCloudData);
       lastLocalFingerprint=fingerprint(cloudPayload());
-      const choice=confirm('Bu hesapta daha önce kaydedilmiş bulut verisi var.\\n\\nTamam: Buluttaki verileri bu cihazda kullan.\\nİptal: Bu cihazdaki verileri buluta yükle.');
+      const choice=confirm('Bu hesapta daha önce kaydedilmiş bulut verisi var.\n\nTamam: Buluttaki verileri bu cihazda kullan.\nİptal: Bu cihazdaki verileri buluta yükle.');
       if(choice){
-        const cloud=snap.data().data;
-        data={...defaults,...cloud,files:data.files||[]};
+        const cloud=snap.data().data;data={...defaults,...cloud,files:data.files||[]};
         lastLocalFingerprint=fingerprint(cloudPayload());
         try{localStorage.setItem('dersTakipData',JSON.stringify(data));}catch(e){}
-        renderAll(); setSyncMessage('Bulut verisi bu cihaza yüklendi. Yerel dosyaların korunmaya çalışıldı.');
-      } else { await syncNow(); }
-    } else {
-      await syncNow();
-      setSyncMessage('İlk bulut yedeği oluşturuldu. Dosyalar cihazında kalır.');
-    }
-  } catch(e){ setFirebaseStatus('Veri erişim hatası'); setSyncMessage(firebaseError(e)); }
+        renderAll();setSyncMessage('Bulut verisi bu cihaza yüklendi. Yerel dosyaların korunmaya çalışıldı.');
+      } else {await syncNow();}
+    } else {await syncNow();setSyncMessage('İlk bulut yedeği oluşturuldu. Dosyalar cihazında kalır.');}
+  } catch(e){setFirebaseStatus('Veri erişim hatası');setSyncMessage(firebaseError(e));}
 }
 if(fbAuth){
-  fbAuth.onAuthStateChanged(handleFirebaseUser);
+  const remembered=localStorage.getItem('dersTakipRememberMe')!=='false';
+  const rememberBox=document.getElementById('rememberMeToggle');if(rememberBox)rememberBox.checked=remembered;
+  fbAuth.setPersistence(remembered ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
+    .then(()=>fbAuth.onAuthStateChanged(handleFirebaseUser))
+    .catch(err=>{console.warn('Auth persistence ayarlanamadı:',err);fbAuth.onAuthStateChanged(handleFirebaseUser);});
+  window.setTimeout(()=>{
+    if(!currentFirebaseUser){const guest=(()=>{try{return sessionStorage.getItem('dersTakipGuestSession')==='true'}catch(e){return false}})();if(!guest)showAuthGate();}
+  },1400);
+} else {showAuthGate();}
+if(document.getElementById('rememberMeToggle')){
+ document.getElementById('rememberMeToggle').addEventListener('change',async()=>{
+  try{await applyAuthPersistence();toast(rememberSession()?'Oturum bu cihazda açık kalacak.':'Oturum bu sekme açıkken korunacak.');}
+  catch(e){toast(firebaseError(e));}
+ });
 }
 // Local changes are persisted on this device. Cloud sync is explicit via the button,
 // avoiding accidental overwrites while multiple devices are editing.

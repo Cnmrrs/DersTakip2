@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ders-takip-shell-v16.1.1-beta1';
+const CACHE_NAME = 'ders-takip-shell-v16.1.1-beta2';
 const APP_SHELL = [
   './',
   './index.html',
